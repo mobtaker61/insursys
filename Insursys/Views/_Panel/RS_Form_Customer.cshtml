@@ -1,0 +1,589 @@
+﻿@{
+    ViewBag.Title = "view";
+    Layout = null;
+
+    Insursys.Models.Repository.rpt_GeoData RGeo = new Insursys.Models.Repository.rpt_GeoData();
+}
+
+<!--+----------------------+
+    |      2018/06/09      |
+    +----------------------+
+    |   M.Totonchi         |
+    +----------------------+
+
+    +---------+------+----------------------------------------+
+    | Level   |  80  | Message                                |
+    +---------+------+----------------------------------------+
+    | Warning | 1265 | Data truncated for column 'i' at row 1 |
+    +---------+------+----------------------------------------+-------->
+
+<div class="">
+
+
+    <!-- Required Plugin CSS -->
+    <link rel="stylesheet" type="text/css" href="vendor/plugins/tagmanager/tagmanager.css">
+    <link rel="stylesheet" type="text/css" href="vendor/plugins/daterange/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="vendor/plugins/datepicker/css/bootstrap-datetimepicker.css">
+    <link rel="stylesheet" type="text/css" href="vendor/plugins/colorpicker/css/bootstrap-colorpicker.min.css">
+
+    <!-- DATE طراحی داخلی -->
+    <link rel="stylesheet" type="text/css" href="/Content/_panel/vendor/plugins/datepicker/css/bootstrap-datetimepicker.css">
+    <script type="text/javascript" src="/Content/_panel/vendor/plugins/daterange/daterangepicker.js"></script>
+    <script type="text/javascript" src="/Content/_panel/vendor/plugins/datepicker/js/bootstrap-datetimepicker.min.js"></script>
+
+    <script src="/Content/_default/js/select.js"></script>
+    <link href="/Content/_default/css/select.css" rel="stylesheet" />
+
+    <div class="panel mt5" style="margin:auto;float:none;padding:0;">
+
+        <div class="panel-heading">
+            <span class="panel-title lang_NewCustomer">New Customer</span>
+            <ul class="nav panel-tabs-border panel-tabs">
+                <li class="active"><a href="#tab1_1" data-toggle="tab" class="lang_IdentifyData">Identify Data</a></li>
+                <li><a href="#tab1_2" data-toggle="tab" class="lang_Address">Address && Contact</a></li>
+                <li><a href="#tab1_3" data-toggle="tab" class="lang_UserDetail">Cantact</a></li>
+                <li><a href="#tab1_4" data-toggle="tab" class="lang_Permission">User Detail</a></li>
+            </ul>
+        </div>
+
+        <div class="panel-body">
+            <form method="put" action="#" id="admin-form" class="tab-content pn br-n admin-form">
+
+                <!--+-----------------+
+                    |     TAB[1]      |
+                    +-----------------+----->
+                <div id="tab1_1" class="tab-pane active">
+
+                    <div class="panel heading-border panel-system">
+                        <div class="panel-body bg-light">
+
+                                <div class="section-divider mb40" id="spy1">
+                                    <span>Form UI Elements</span>
+                                </div>
+                                <!-- .section-divider -->
+                                <!-- Basic Inputs -->
+
+
+
+                                <!-- Name and Famliy -->
+                                <div class="row">
+
+                                    <div class="col-md-4">
+                                        <div class="fileupload fileupload-new admin-form" data-provides="fileupload">
+                                            <div class="fileupload-preview thumbnail mb20">
+                                                <img data-src="holder.js/100%x140" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9InllcyI/PjxzdmcgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMjYyIiBoZWlnaHQ9IjE0MCIgdmlld0JveD0iMCAwIDI2MiAxNDAiIHByZXNlcnZlQXNwZWN0UmF0aW89Im5vbmUiPjxkZWZzLz48cmVjdCB3aWR0aD0iMjYyIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI0VFRUVFRSIvPjxnPjx0ZXh0IHg9Ijk5Ljg1OTM3NSIgeT0iNzAiIHN0eWxlPSJmaWxsOiNBQUFBQUE7Zm9udC13ZWlnaHQ6Ym9sZDtmb250LWZhbWlseTpBcmlhbCwgSGVsdmV0aWNhLCBPcGVuIFNhbnMsIHNhbnMtc2VyaWYsIG1vbm9zcGFjZTtmb250LXNpemU6MTJwdDtkb21pbmFudC1iYXNlbGluZTpjZW50cmFsIj4yNjJ4MTQwPC90ZXh0PjwvZz48L3N2Zz4=" alt="holder">
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12">
+                                                    <span class="button btn-system btn-file btn-block">
+                                                        <span class="fileupload-new">Select</span>
+                                                        <span class="fileupload-exists">Change</span>
+                                                        <input type="file">
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-8 pl15">
+
+                                        <div class="section mb15">
+                                            <div class="option-group field">
+                                                <label class="option option-system">
+                                                    <input type="radio" name="Gender" checked="">
+                                                    <span class="radio"></span>Male
+                                                </label>
+                                                <label class="option option-system">
+                                                    <input type="radio" name="Gender">
+                                                    <span class="radio"></span>Female
+                                                </label>
+                                            </div>
+                                            <!-- end .option-group section -->
+                                        </div>
+
+                                        <div class="section mb10">
+                                            <div class="section">
+                                                <label class="field prepend-icon">
+                                                    <input type="text" name="firstname" id="firstname" class="gui-input" placeholder="First Name">
+                                                    <label for="firstname" class="field-icon">
+                                                        <i class="fa fa-user"></i>
+                                                    </label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="section mb10">
+                                            <div class="section">
+                                                <label class="field prepend-icon">
+                                                    <input type="text" name="lastname" id="lastname" class="gui-input" placeholder="last name">
+                                                    <label for="lastname" class="field-icon">
+                                                        <i class="fa fa-user"></i>
+                                                    </label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="section mb10">
+                                            <div class="section">
+                                                <label class="field prepend-icon">
+                                                    <input type="text" name="displayname" id="displayname" class="gui-input" placeholder="Full Name" disabled="">
+                                                    <label for="displayname" class="field-icon">
+                                                        <i class="fa fa-user"></i>
+                                                    </label>
+                                                </label>
+                                            </div>
+                                        </div>
+
+
+
+
+                                    </div>
+
+                                    </div>
+                                <!-- Country Select --->
+                                <div class="row">
+
+
+                                    <div class="col-md-4">
+                                        <div class="section">
+                                            <label class="field select">
+                                                <select id="selectID" name="selectID">
+                                                    <option value="" class="lang_Nationality">Nationality</option>
+                                                    @{ foreach (var nation in RGeo.GetCoutryList())
+                                                    {
+                                                    <option value="@nation.Country_Id">@nation.Country_Name</option>
+                                                    }
+                                                    }
+                                                </select>
+                                                <i class="arrow"></i>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="section">
+                                            <label class="field prepend-icon">
+                                                <input type="text" name="PassId" id="PassId" class="gui-input" placeholder="Passport ID">
+                                                <label for="PassId" class="field-icon">
+                                                    <i class="fa fa-crosshairs"></i>
+                                                </label>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="section">
+                                            <label class="field prepend-icon">
+                                                <input type="text" name="nationId" id="nationId" class="gui-input" placeholder="National ID">
+                                                <label for="nationId" class="field-icon">
+                                                    <i class="fa fa-crosshairs"></i>
+                                                </label>
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <!-- ID -->
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="section">
+                                            <div class="input-group date">
+                                                <span class="input-group-addon cursor">
+                                                    <i class="fa fa-calendar"></i>
+                                                </span>
+                                                <input id="datepicker1" type="text" class="form-control" placeholder="BirthDay">
+                                            </div>
+
+                              
+
+
+                                        </div>
+                                    </div>
+                                    <!-- .section-divider -->
+                                    <!-- Name and Famliy -->
+                                        <div class="col-md-4">
+                                            <div class="section">
+                                                <label class="field prepend-icon">
+                                                    <input type="text" name="fathername" id="fathername" class="gui-input" placeholder="Fother Name">
+                                                    <label for="fathername" class="field-icon">
+                                                        <i class="fa fa-user"></i>
+                                                    </label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="section">
+                                                <label class="field prepend-icon">
+                                                    <input type="text" name="mothername" id="mothername" class="gui-input" placeholder="Mother name">
+                                                    <label for="mothername" class="field-icon">
+                                                        <i class="fa fa-user"></i>
+                                                    </label>
+                                                </label>
+                                            </div>
+                                        </div>
+                                </div>
+
+
+                        </div>
+                    </div>
+                    <!--+|  AKO |+----->
+
+                </div>
+
+                <!--+-----------------+
+                    |     TAB[2]      |
+                    +-----------------+----->
+                <div id="tab1_2" class="tab-pane">
+
+                    <div class="section-divider mb40 mt20"><span> پیگیری سفارش </span></div>
+
+                    <div class="section row">
+                        <!--عنوان گزارش-->
+                        <div class="col-xs-6" dir="ltr">
+                            <select id="title_report" class="contextual-single form-control select-system w200" style="width:100%;">
+                                @MvcHtmlString.Create(ViewBag.titleReport_option)
+                            </select>
+                            <script>$("#title_report").select2();</script>
+                        </div>
+
+                        <!--تاریخ-->
+                        <div class="col-xs-6" dir="ltr">
+                            <div class="input-group date" id="datetimepicker3">
+                                <span class="input-group-addon cursor">
+                                    <i class="fa fa-calendar"></i>
+                                </span>
+                                <input type="text" id="date_follow_SH" class="form-control">
+                            </div>
+                            <script>
+
+                                $("#datepicker1").datepicker({
+                                    prevText: '<i class="fa fa-chevron-left"></i>',
+                                    nextText: '<i class="fa fa-chevron-right"></i>',
+                                    showButtonPanel: false,
+                                    beforeShow: function (input, inst) {
+                                        var newclass = 'admin-form';
+                                        var themeClass = $(this).parents('.admin-form').attr('class');
+                                        var smartpikr = inst.dpDiv.parent();
+                                        if (!smartpikr.hasClass(themeClass)) {
+                                            inst.dpDiv.wrap('<div class="' + themeClass + '"></div>');
+                                        }
+                                    }
+                                });
+
+
+                                $('#datetimepicker3').datetimepicker({
+                                    inline: false,
+                                    daysOfWeekDisabled: [6],
+                                    disabledDates: ["15/03/1395"]
+
+                                });
+
+
+
+                            </script>
+                        </div>
+                    </div>
+
+                    <div class="section row">
+                        <!--متن کوتاه-->
+                        <div class="col-md-12 mt20 mb20">
+                            <label for="_des_text" class="field prepend-icon">
+                                <textarea id="_des_text" class="gui-textarea br-light bg-light" name="_des_text" style="min-height: 123px;" placeholder="توضیحات ندارد"></textarea>
+                                <b class="tooltip tip-left-bottom"><em> توضیحات سفارش </em></b>
+                                <label for="_des_text" class="field-icon"><i class="fa fa-comments"></i></label>
+                            </label>
+
+                        </div>
+                    </div>
+
+
+                    <div class="section-divider mb40 mt20"><span> لیست گزارشات </span></div>
+                    <!-- لیست گزارشات -->
+                    <table class="table admin-form theme-warning tc-checkbox-1 fs13">
+                        <!-- عناوین جدول -->
+                        <thead>
+                            <tr class="bg-light">
+                                <th class="">ثبت کننده</th>
+                                <th class="">عنوان</th>
+                                <th class="">متن</th>
+                                <th class="">تاریخ ثبت</th>
+                            </tr>
+                        </thead>
+
+                        <!-- محتوای جدول -->
+                        <tbody id="value_list_report">@MvcHtmlString.Create(@ViewBag.history_li)</tbody>
+                    </table>
+                    <br />
+
+                    <!--+-----------------+
+                        |     FOOTER      |
+                        +-----------------+----->
+                    <div class="panel-footer text-right ">
+
+                        <button id="J_btn_add" class="button btn-system" onclick="cmd_add_value()" type="button">ثبت گزارش</button>
+                        <button id="J_btn_close" type="button" class="button left-column" style="float:left">برگشت</button>
+
+                        <span id="J_return_alert"></span>
+
+                        <!--+-----------------+
+                            |       ADD       |
+                            +-----------------+
+                            |      UPDATE     |
+                            +-----------------+-------->
+                        <script>
+                            function cmd_add_value() {
+                                filds_validate = "";
+                                var _content = $(".fr-element.fr-view").html();
+                                var count_error = $('form').find('.field.prepend-icon.state-error').length;
+
+                                //عنوان گزارش :
+                                var title_report = document.getElementById("title_report").options[document.getElementById("title_report").selectedIndex].value;
+                                var title_report_text = document.getElementById("title_report").options[document.getElementById("title_report").selectedIndex].text;
+                                var text = document.getElementById("_des_text").value;
+                                for (var i = 0; i < text.split('\n').length; i++) {
+                                    text = text.replace('\n', '<br>');
+                                }
+                                if (filds_validate == "") {
+                                    $.ajax({
+                                        url: '/_AdminCommand/Insert_order_history/',
+                                        type: 'POST',
+                                        data: {
+                                            acc_id_follow: 1,
+                                            order_forms_id: @ViewBag.id_order,
+                                            filds__title_id: title_report,
+                                            text: text,
+                                        }
+                                        , success: function (data, status) {
+                                            //برای رفرش کلی
+                                            @*value_list_report.innerHTML = "@MvcHtmlString.Create(ViewBag.history_li)";*@
+
+                                            value_list_report.insertRow(0).innerHTML = "<tr class='row_select'><td>1</td><td>" + title_report_text + "</td><td>" + text + "</td><td>" + "هم اکنون" + "</td></tr>";
+                                            fnGetData();
+                                            alert("گزارش ثبت شد");
+                                        }
+                                    });
+
+                                    if (title_report == 13) {
+
+                                        // 13 = حذف شده
+                                        if (select_view == "value_list") {
+                                            document.getElementById(select_view).deleteRow(id_index);
+                                        }
+                                    }
+                                    else {
+                                        document.getElementById(select_view).rows[id_index].cells.item(8).getElementsByTagName("p").item(1).innerHTML = title_report_text;
+                                        document.getElementById(select_view).rows[id_index].cells.item(8).getElementsByTagName("p").item(1).setAttribute("class", "btn btn-warning br2 btn-xs fs12 dropdown-toggle");
+                                    }
+                                    //btn-warning
+                                }
+                                else { alert("NO"); }
+                            }
+                            function cmd_update_value() {
+                                edit_values('/web_sections/ADMIN/DATA/update_values/',
+                                    '#J_return_alert',
+                                    HS.value,
+                                    MS.value,
+                                    size.value,
+                                    country.value,
+                                    table_name.value,
+                                    id.value);
+                            }
+                        </script>
+                    </div>
+
+                </div>
+
+                <!--+-----------------+
+                    |     TAB[3]      |
+                    +-----------------+----->
+                <div id="tab1_3" class="tab-pane">
+
+                    <div class="section-divider mb40 mt20"><span> اطلاعات کاربر </span></div>
+
+                    <div class="section row">
+                        <!--نام-->
+                        <div class="col-md-6">
+                            <label for="filds__Fname" class="field prepend-icon">
+                                <input disabled class="gui-input cantact-group" placeholder="نام" value="@ViewBag.fname">
+                                <label class="field-icon"><i class="fa J-fa-fname"></i></label>
+                            </label>
+                        </div>
+
+                        <!--نام خانوادگی-->
+                        <div class="col-md-6">
+                            <label class="field prepend-icon">
+                                <input disabled class="gui-input cantact-group" placeholder="نام خانوادگی" value="@ViewBag.lname">
+                                <label class="field-icon"><i class="fa J-fa-lname"></i></label>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="section row">
+                        <!--نام شرکت-->
+                        <div class="col-md-6">
+                            <label class="field prepend-icon">
+                                <input disabled class="gui-input cantact-group" placeholder="نام شرکت" value="@ViewBag.Cname">
+                                <label class="field-icon"><i class="fa J-fa-co"></i></label>
+                            </label>
+                        </div>
+
+                        <!--شماره کارت ملی-->
+                        <div class="col-md-6">
+                            <label class="field prepend-icon">
+                                <input disabled class="gui-input cantact-group" placeholder="شماره کارت ملی" value="@ViewBag.codemeli">
+                                <label class="field-icon"><i class="fa J-fa-meli"></i></label>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="section row">
+
+
+                        <!--آدرس-->
+                        <div class="col-md-12">
+                            <label class="field prepend-icon">
+                                <input disabled class="gui-input cantact-group" placeholder="آدرس" value="@ViewBag.address">
+                                <label class="field-icon"><i class="fa J-fa-address"></i></label>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="section row">
+                        <!--شماره تلفن-->
+                        <div class="col-md-6">
+                            <label class="field prepend-icon">
+                                <input disabled class="gui-input cantact-group" placeholder="شماره تلفن" value="@ViewBag.tel">
+                                <label class="field-icon"><i class="fa J-fa-tel"></i></label>
+                            </label>
+                        </div>
+
+                        <!--موبایل-->
+                        <div class="col-md-6">
+                            <label class="field prepend-icon">
+                                <input disabled class="gui-input cantact-group" placeholder="موبایل" value="@ViewBag.mobile">
+                                <label class="field-icon"><i class="fa J-fa-mob"></i></label>
+                            </label>
+                        </div>
+                    </div>
+
+
+
+
+                    <div class="section row">
+                        <!--نام پدی-->
+                        <div class="col-md-6">
+                            <label class="field prepend-icon">
+                                <input disabled class="gui-input cantact-group" placeholder="نام پدی" value="@ViewBag.father_name">
+                                <label class="field-icon"><i class="fa J-fa-myfathername"></i></label>
+                            </label>
+                        </div>
+
+                        <!--تاریخ تولد-->
+                        <div class="col-md-6">
+                            <label class="field prepend-icon">
+                                <input disabled class="gui-input cantact-group" placeholder="تاریخ تولد" value="@ViewBag.birtday">
+                                <label class="field-icon"><i class="fa J-fa-birt"></i></label>
+                            </label>
+                        </div>
+                    </div>
+
+
+
+                    <div class="section row">
+                        <!--شماره شناسنامه-->
+                        <div class="col-md-6">
+                            <label class="field prepend-icon">
+                                <input disabled class="gui-input cantact-group" placeholder="شماره شناسنامه" value="@ViewBag.no_identity">
+                                <label class="field-icon"><i class="fa J-fa-identity"></i></label>
+                            </label>
+                        </div>
+
+                        <!--ایمیل-->
+                        <div class="col-md-6">
+                            <label class="field prepend-icon">
+                                <input disabled class="gui-input cantact-group" placeholder="ایمیل" value="@ViewBag.email">
+                                <label class="field-icon"><i class="fa J-fa-email"></i></label>
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="section row">
+                        <!--کد پستی-->
+                        <div class="col-md-6">
+                            <label class="field prepend-icon">
+                                <input disabled class="gui-input cantact-group" placeholder="کد پستی" value="@ViewBag.post_code">
+                                <label class="field-icon"><i class="fa J-fa-post"></i></label>
+                            </label>
+                        </div>
+
+                        <!--جنسیت-->
+                        <div class="col-md-6">
+                            <label class="field prepend-icon">
+                                <input disabled class="gui-input cantact-group" placeholder="جنسیت" value="@ViewBag.se">
+                                <label class="field-icon"><i class="fa J-fa-se"></i></label>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--+-----------------+
+                    |     TAB[4]      |
+                    +-----------------+----->
+                <div id="tab1_4" class="tab-pane">
+
+                    <div class="section-divider mb40 mt20"><span> لیست تراکنش ها </span></div>
+
+                    <table class="table admin-form theme-warning tc-checkbox-1 fs13">
+                        <!-- <!-- عناوین جدول -->
+                        <thead>
+                            <tr class="bg-light">
+                                <th class="">شماره درخواست</th>
+                                <th class="">کد سفارش</th>
+                                <th class="">عنوان</th>
+                                <th class="">نام بانک</th>
+                                <th class="">وضعیت</th>
+                                <th class="">شماره پیگیری</th>
+                                <th class="">مبلغ تراکنش</th>
+                                <th class="">تاریخ ثبت</th>
+                                <th class="">تاریخ و ساعت میلادی</th>
+                            </tr>
+                        </thead>
+
+                        <!-- <!-- محتوای جدول -->
+                        <tbody>@MvcHtmlString.Create(ViewBag.transaction_li)</tbody>
+                    </table>
+                    <br />
+                </div>
+
+            </form>
+        </div>
+
+        <!--+-----------------+
+            | مقدارهای اجباری |
+            +-----------------+------>
+
+
+
+
+
+        <script src="/Content/_panel/vendor/plugins/fileupload/fileupload.js"></script>
+        <script src="/Content/_panel/vendor/plugins/holder/holder.min.js"></script>
+        
+
+
+
+
+        <script type="text/javascript" src="/Content/_admin/assets/admin-tools/admin-forms/js/jquery.validate.min.js"></script>
+        <script type="text/javascript" src="/Content/_admin/assets/admin-tools/admin-forms/js/additional-methods.min.js"></script>
+
+
+
+        <script>
+
+
+
+        </script>
+
+    </div>
+
+
+</div>

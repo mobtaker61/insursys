@@ -1,0 +1,2037 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="RSEnModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="RS_Account">
+          <Key>
+            <PropertyRef Name="Account_Id" />
+          </Key>
+          <Property Name="Account_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Account_ParentId" Type="int" />
+          <Property Name="Account_Username" Type="nvarchar" MaxLength="50" />
+          <Property Name="Account_Password" Type="nvarchar" MaxLength="50" />
+          <Property Name="Account_DisplayName" Type="nvarchar" MaxLength="100" />
+          <Property Name="Account_Token" Type="nvarchar" MaxLength="50" />
+          <Property Name="Account_LastLogin" Type="datetime" />
+          <Property Name="Account_Active" Type="bit" Nullable="false" />
+          <Property Name="Account_RoleId" Type="int" />
+          <Property Name="Account_Commision" Type="int" />
+          <Property Name="Account_LanguageId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RS_AccountAddress">
+          <Key>
+            <PropertyRef Name="AccountAddress_Id" />
+          </Key>
+          <Property Name="AccountAddress_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountAddress_Title" Type="nvarchar" MaxLength="10" />
+          <Property Name="AccountAddress_AccountId" Type="int" />
+          <Property Name="AccountAddress_CountryId" Type="int" />
+          <Property Name="AccountAddress_StateId" Type="int" />
+          <Property Name="AccountAddress_CityId" Type="int" />
+          <Property Name="AccountAddress_RegionId" Type="int" />
+          <Property Name="AccountAddress_Address" Type="int" />
+          <Property Name="AccountAddress_ZipCode" Type="nchar" MaxLength="10" />
+          <Property Name="AccountAddress_Default" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RS_AccountContact">
+          <Key>
+            <PropertyRef Name="AccountContact_Id" />
+          </Key>
+          <Property Name="AccountContact_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountContact_AccountId" Type="int" Nullable="false" />
+          <Property Name="AccountContact_Value" Type="nvarchar" MaxLength="20" />
+          <Property Name="AccountContact_Type" Type="nvarchar" MaxLength="10" />
+          <Property Name="AccountContact_Date" Type="date" />
+          <Property Name="AccountContact_Active" Type="bit" />
+          <Property Name="AccountContact_Primary" Type="bit" />
+        </EntityType>
+        <EntityType Name="RS_AccountInfo">
+          <Key>
+            <PropertyRef Name="AccountInfo_Id" />
+          </Key>
+          <Property Name="AccountInfo_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountInfo_AccountId" Type="int" Nullable="false" />
+          <Property Name="AccountInfo_FirstName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountInfo_LastName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountInfo_Gender" Type="nchar" MaxLength="1" />
+          <Property Name="AccountInfo_Country_Nationality" Type="int" />
+          <Property Name="AccountInfo_Country_BirthPlace" Type="int" />
+          <Property Name="AccountInfo_PassId" Type="nchar" MaxLength="10" />
+          <Property Name="AccountInfo_NationalId" Type="nchar" MaxLength="10" />
+          <Property Name="AccountInfo_CompanyName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountInfo_Birthday" Type="date" />
+          <Property Name="AccountInfo_Picture" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountInfo_RegisterDate" Type="date" />
+          <Property Name="AccountInfo_EditDate" Type="datetime" />
+          <Property Name="AccountInfo_Father" Type="nvarchar" MaxLength="50" />
+          <Property Name="AccountInfo_Mother" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RS_Issued">
+          <Key>
+            <PropertyRef Name="Issued_Id" />
+          </Key>
+          <Property Name="Issued_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Issued_RequestId" Type="int" Nullable="false" />
+          <Property Name="Issued_No" Type="nvarchar" MaxLength="50" />
+          <Property Name="Issued_Price" Type="decimal" Precision="6" Scale="2" />
+          <Property Name="Issued_StartDate" Type="smalldatetime" />
+          <Property Name="Issued_OriginalPolicyUrl" Type="nvarchar" MaxLength="50" />
+          <Property Name="Issued_Date" Type="smalldatetime" />
+        </EntityType>
+        <EntityType Name="RS_Language">
+          <Key>
+            <PropertyRef Name="Language_Id" />
+          </Key>
+          <Property Name="Language_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Language_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Language_DisplayName" Type="nvarchar" MaxLength="50" />
+          <Property Name="Language_Flag" Type="nvarchar" MaxLength="50" />
+          <Property Name="Language_Iso" Type="nvarchar" MaxLength="3" />
+          <Property Name="Language_Active" Type="bit" Nullable="false" />
+          <Property Name="Language_Direction" Type="nvarchar" MaxLength="3" />
+        </EntityType>
+        <EntityType Name="RS_LanguageContent">
+          <Key>
+            <PropertyRef Name="LanguageContent_Id" />
+          </Key>
+          <Property Name="LanguageContent_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="LanguageContent_Group" Type="nchar" MaxLength="10" />
+          <Property Name="LanguageContent_TagName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LanguageContent_EN" Type="nvarchar" MaxLength="50" />
+          <Property Name="LanguageContent_TR" Type="nvarchar" MaxLength="50" />
+          <Property Name="LanguageContent_RU" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RS_Loc_City">
+          <Key>
+            <PropertyRef Name="City_Id" />
+          </Key>
+          <Property Name="City_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="City_StateId" Type="int" Nullable="false" />
+          <Property Name="City_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="City_MapLat" Type="decimal" Precision="9" Scale="6" />
+          <Property Name="City_MapLan" Type="decimal" Precision="9" Scale="6" />
+          <Property Name="City_WsCode" Type="int" />
+        </EntityType>
+        <EntityType Name="RS_Loc_Country">
+          <Key>
+            <PropertyRef Name="Country_Id" />
+          </Key>
+          <Property Name="Country_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Country_Name" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Country_Iso" Type="nchar" MaxLength="10" />
+          <Property Name="Country_coefficient" Type="decimal" Precision="3" Scale="2" />
+        </EntityType>
+        <EntityType Name="RS_Loc_Region">
+          <Key>
+            <PropertyRef Name="Region_Id" />
+          </Key>
+          <Property Name="Region_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Region_CityId" Type="int" Nullable="false" />
+          <Property Name="Region_Name" Type="nvarchar" MaxLength="60" Nullable="false" />
+          <Property Name="Region_WsCode" Type="int" />
+        </EntityType>
+        <EntityType Name="RS_Loc_State">
+          <Key>
+            <PropertyRef Name="State_Id" />
+          </Key>
+          <Property Name="State_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="State_CountryId" Type="int" />
+          <Property Name="State_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="State_WsCode" Type="int" />
+        </EntityType>
+        <EntityType Name="RS_Menu">
+          <Key>
+            <PropertyRef Name="Menu_Id" />
+          </Key>
+          <Property Name="Menu_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Menu_ParentId" Type="int" />
+          <Property Name="Menu_FormName" Type="nvarchar" MaxLength="150" />
+          <Property Name="Menu_Url" Type="nvarchar" MaxLength="150" />
+          <Property Name="Menu_Icon" Type="nvarchar" MaxLength="50" />
+          <Property Name="Menu_Class" Type="nvarchar" MaxLength="150" />
+          <Property Name="Menu_Active" Type="bit" Nullable="false" />
+          <Property Name="Menu_Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Menu_Order" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RS_Package">
+          <Key>
+            <PropertyRef Name="Package_Id" />
+          </Key>
+          <Property Name="Package_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Package_ProviderId" Type="int" />
+          <Property Name="Package_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Package_ServiceTypeId" Type="int" />
+          <Property Name="Package_Coefficient" Type="decimal" Precision="3" Scale="2" />
+          <Property Name="Package_WebServiceId" Type="int" />
+          <Property Name="Package_Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RS_Provider">
+          <Key>
+            <PropertyRef Name="Provider_Id" />
+          </Key>
+          <Property Name="Provider_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Provider_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Provider_Logo" Type="nvarchar" MaxLength="50" />
+          <Property Name="Provider_Active" Type="bit" />
+          <Property Name="Provider_Website" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RS_Request">
+          <Key>
+            <PropertyRef Name="Request_Id" />
+          </Key>
+          <Property Name="Request_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Request_SiteId" Type="int" Nullable="false" />
+          <Property Name="Request_PackageId" Type="int" Nullable="false" />
+          <Property Name="Request_StartDate" Type="date" Nullable="false" />
+          <Property Name="Request_DurationDay" Type="int" Nullable="false" />
+          <Property Name="Request_AccountId" Type="int" />
+          <Property Name="Request_StatusId" Type="int" Nullable="false" />
+          <Property Name="Request_TempNo" Type="nchar" MaxLength="10" />
+          <Property Name="Request_SubmitDate" Type="smalldatetime" />
+          <Property Name="Request_Weight" Type="int" />
+          <Property Name="Request_Tall" Type="int" />
+        </EntityType>
+        <EntityType Name="RS_RoleAccess">
+          <Key>
+            <PropertyRef Name="RoleAccess_Id" />
+          </Key>
+          <Property Name="RoleAccess_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleAccess_MenuId" Type="int" Nullable="false" />
+          <Property Name="RoleAccess_Role_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RS_Roles">
+          <Key>
+            <PropertyRef Name="Role_ID" />
+          </Key>
+          <Property Name="Role_ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Role_Name" Type="nvarchar" MaxLength="10" />
+          <Property Name="Role_Title" Type="nvarchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="RS_ServiceType">
+          <Key>
+            <PropertyRef Name="ServiceType_Id" />
+          </Key>
+          <Property Name="ServiceType_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ServiceType_Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ServiceType_Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RS_Site">
+          <Key>
+            <PropertyRef Name="Site_Id" />
+          </Key>
+          <Property Name="Site_Id" Type="int" Nullable="false" />
+          <Property Name="Site_Name" Type="nvarchar" MaxLength="50" />
+          <Property Name="Site_Url" Type="nvarchar" MaxLength="50" />
+          <Property Name="Site_Hosts" Type="nvarchar" MaxLength="50" />
+          <Property Name="Site_LanguageId_Default" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RS_SiteInfo">
+          <Key>
+            <PropertyRef Name="SiteInfo_Id" />
+          </Key>
+          <Property Name="SiteInfo_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SiteInfo_Logo" Type="nvarchar" MaxLength="50" />
+          <Property Name="SiteInfo_LocalName" Type="nvarchar" MaxLength="50" />
+          <Property Name="SiteInfo_AccountId_Admin" Type="int" />
+          <Property Name="SiteInfo_SiteId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RS_SiteSetting">
+          <Key>
+            <PropertyRef Name="SiteSetting_Id" />
+          </Key>
+          <Property Name="SiteSetting_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SiteSetting_SiteId" Type="int" Nullable="false" />
+          <Property Name="SiteSetting_Field" Type="nvarchar" MaxLength="50" />
+          <Property Name="SiteSetting_Value" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RS_StatusType">
+          <Key>
+            <PropertyRef Name="StatusType_Id" />
+          </Key>
+          <Property Name="StatusType_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StatusType_Name" Type="nvarchar" MaxLength="15" />
+          <Property Name="StatusType_Flag" Type="nvarchar" MaxLength="50" />
+          <Property Name="StatusType_Color" Type="nvarchar" MaxLength="50" />
+          <Property Name="StatusType_Class" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="RS_Transaction">
+          <Key>
+            <PropertyRef Name="Transaction_Id" />
+          </Key>
+          <Property Name="Transaction_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Transaction_SiteId" Type="int" Nullable="false" />
+          <Property Name="Transaction_DocumentNo" Type="nvarchar" MaxLength="10" />
+          <Property Name="Transaction_AccountId" Type="int" />
+          <Property Name="Transaction_Date" Type="smalldatetime" />
+          <Property Name="Transaction_Description" Type="nvarchar" MaxLength="150" />
+          <Property Name="Transaction_Type" Type="int" Nullable="false" />
+          <Property Name="Transaction_Debtor" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+          <Property Name="Transaction_Creditor" Type="decimal" Precision="8" Scale="2" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RS_TransactionType">
+          <Key>
+            <PropertyRef Name="TransactionType_Id" />
+          </Key>
+          <Property Name="TransactionType_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TransactionType_Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="TransactionType_Class" Type="nvarchar" MaxLength="50" />
+          <Property Name="TransactionType_Icon" Type="nvarchar" MaxLength="20" />
+          <Property Name="TransactionType_SortOrder" Type="int" />
+          <Property Name="TransactionType_GroupId" Type="int" />
+        </EntityType>
+        <EntityType Name="RS_WebService">
+          <Key>
+            <PropertyRef Name="WebService_Id" />
+          </Key>
+          <Property Name="WebService_Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="WebService_ProviderId" Type="int" />
+          <Property Name="WebService_Url" Type="nvarchar" MaxLength="100" />
+          <Property Name="WebService_Username" Type="nvarchar" MaxLength="20" />
+          <Property Name="WebService_Password" Type="nvarchar" MaxLength="20" />
+          <Property Name="WebService_ApiToken" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_RS_Account_RS_Account">
+          <End Role="RS_Account" Type="Self.RS_Account" Multiplicity="0..1" />
+          <End Role="RS_Account1" Type="Self.RS_Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Account">
+              <PropertyRef Name="Account_Id" />
+            </Principal>
+            <Dependent Role="RS_Account1">
+              <PropertyRef Name="Account_ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Account_RS_Language">
+          <End Role="RS_Language" Type="Self.RS_Language" Multiplicity="1" />
+          <End Role="RS_Account" Type="Self.RS_Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Language">
+              <PropertyRef Name="Language_Id" />
+            </Principal>
+            <Dependent Role="RS_Account">
+              <PropertyRef Name="Account_LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Account_RS_Roles">
+          <End Role="RS_Roles" Type="Self.RS_Roles" Multiplicity="0..1" />
+          <End Role="RS_Account" Type="Self.RS_Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Roles">
+              <PropertyRef Name="Role_ID" />
+            </Principal>
+            <Dependent Role="RS_Account">
+              <PropertyRef Name="Account_RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_AccountAddress_RS_Account">
+          <End Role="RS_Account" Type="Self.RS_Account" Multiplicity="0..1" />
+          <End Role="RS_AccountAddress" Type="Self.RS_AccountAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Account">
+              <PropertyRef Name="Account_Id" />
+            </Principal>
+            <Dependent Role="RS_AccountAddress">
+              <PropertyRef Name="AccountAddress_AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_AccountAddress_RS_Loc_Region">
+          <End Role="RS_Loc_Region" Type="Self.RS_Loc_Region" Multiplicity="0..1" />
+          <End Role="RS_AccountAddress" Type="Self.RS_AccountAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Loc_Region">
+              <PropertyRef Name="Region_Id" />
+            </Principal>
+            <Dependent Role="RS_AccountAddress">
+              <PropertyRef Name="AccountAddress_RegionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_AccountContact_RS_Account">
+          <End Role="RS_Account" Type="Self.RS_Account" Multiplicity="1" />
+          <End Role="RS_AccountContact" Type="Self.RS_AccountContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Account">
+              <PropertyRef Name="Account_Id" />
+            </Principal>
+            <Dependent Role="RS_AccountContact">
+              <PropertyRef Name="AccountContact_AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_AccountInfo_RS_Account">
+          <End Role="RS_Account" Type="Self.RS_Account" Multiplicity="1" />
+          <End Role="RS_AccountInfo" Type="Self.RS_AccountInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Account">
+              <PropertyRef Name="Account_Id" />
+            </Principal>
+            <Dependent Role="RS_AccountInfo">
+              <PropertyRef Name="AccountInfo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_AccountInfo_RS_Loc_Country">
+          <End Role="RS_Loc_Country" Type="Self.RS_Loc_Country" Multiplicity="0..1" />
+          <End Role="RS_AccountInfo" Type="Self.RS_AccountInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Loc_Country">
+              <PropertyRef Name="Country_Id" />
+            </Principal>
+            <Dependent Role="RS_AccountInfo">
+              <PropertyRef Name="AccountInfo_Country_Nationality" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_AccountInfo_RS_Loc_Country1">
+          <End Role="RS_Loc_Country" Type="Self.RS_Loc_Country" Multiplicity="0..1" />
+          <End Role="RS_AccountInfo" Type="Self.RS_AccountInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Loc_Country">
+              <PropertyRef Name="Country_Id" />
+            </Principal>
+            <Dependent Role="RS_AccountInfo">
+              <PropertyRef Name="AccountInfo_Country_BirthPlace" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Issued_RS_Request">
+          <End Role="RS_Request" Type="Self.RS_Request" Multiplicity="1" />
+          <End Role="RS_Issued" Type="Self.RS_Issued" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Request">
+              <PropertyRef Name="Request_Id" />
+            </Principal>
+            <Dependent Role="RS_Issued">
+              <PropertyRef Name="Issued_RequestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_LanguageContent_RS_Language">
+          <End Role="RS_Language" Type="Self.RS_Language" Multiplicity="1" />
+          <End Role="RS_LanguageContent" Type="Self.RS_LanguageContent" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Language">
+              <PropertyRef Name="Language_Id" />
+            </Principal>
+            <Dependent Role="RS_LanguageContent">
+              <PropertyRef Name="LanguageContent_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Loc_City_RS_Loc_State">
+          <End Role="RS_Loc_State" Type="Self.RS_Loc_State" Multiplicity="1" />
+          <End Role="RS_Loc_City" Type="Self.RS_Loc_City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Loc_State">
+              <PropertyRef Name="State_Id" />
+            </Principal>
+            <Dependent Role="RS_Loc_City">
+              <PropertyRef Name="City_StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Loc_Region_RS_Loc_City">
+          <End Role="RS_Loc_City" Type="Self.RS_Loc_City" Multiplicity="1" />
+          <End Role="RS_Loc_Region" Type="Self.RS_Loc_Region" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Loc_City">
+              <PropertyRef Name="City_Id" />
+            </Principal>
+            <Dependent Role="RS_Loc_Region">
+              <PropertyRef Name="Region_CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Loc_State_RS_Loc_Country">
+          <End Role="RS_Loc_Country" Type="Self.RS_Loc_Country" Multiplicity="0..1" />
+          <End Role="RS_Loc_State" Type="Self.RS_Loc_State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Loc_Country">
+              <PropertyRef Name="Country_Id" />
+            </Principal>
+            <Dependent Role="RS_Loc_State">
+              <PropertyRef Name="State_CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Menu_RS_Menu">
+          <End Role="RS_Menu" Type="Self.RS_Menu" Multiplicity="0..1" />
+          <End Role="RS_Menu1" Type="Self.RS_Menu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Menu">
+              <PropertyRef Name="Menu_Id" />
+            </Principal>
+            <Dependent Role="RS_Menu1">
+              <PropertyRef Name="Menu_ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Package_RS_Provider">
+          <End Role="RS_Provider" Type="Self.RS_Provider" Multiplicity="0..1" />
+          <End Role="RS_Package" Type="Self.RS_Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Provider">
+              <PropertyRef Name="Provider_Id" />
+            </Principal>
+            <Dependent Role="RS_Package">
+              <PropertyRef Name="Package_ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Package_RS_ServiceType">
+          <End Role="RS_ServiceType" Type="Self.RS_ServiceType" Multiplicity="0..1" />
+          <End Role="RS_Package" Type="Self.RS_Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_ServiceType">
+              <PropertyRef Name="ServiceType_Id" />
+            </Principal>
+            <Dependent Role="RS_Package">
+              <PropertyRef Name="Package_ServiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Package_RS_WebService">
+          <End Role="RS_WebService" Type="Self.RS_WebService" Multiplicity="0..1" />
+          <End Role="RS_Package" Type="Self.RS_Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_WebService">
+              <PropertyRef Name="WebService_Id" />
+            </Principal>
+            <Dependent Role="RS_Package">
+              <PropertyRef Name="Package_WebServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Request_RS_Account">
+          <End Role="RS_Account" Type="Self.RS_Account" Multiplicity="0..1" />
+          <End Role="RS_Request" Type="Self.RS_Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Account">
+              <PropertyRef Name="Account_Id" />
+            </Principal>
+            <Dependent Role="RS_Request">
+              <PropertyRef Name="Request_AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Request_RS_Package">
+          <End Role="RS_Package" Type="Self.RS_Package" Multiplicity="1" />
+          <End Role="RS_Request" Type="Self.RS_Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Package">
+              <PropertyRef Name="Package_Id" />
+            </Principal>
+            <Dependent Role="RS_Request">
+              <PropertyRef Name="Request_PackageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Request_RS_StatusType">
+          <End Role="RS_StatusType" Type="Self.RS_StatusType" Multiplicity="1" />
+          <End Role="RS_Request" Type="Self.RS_Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_StatusType">
+              <PropertyRef Name="StatusType_Id" />
+            </Principal>
+            <Dependent Role="RS_Request">
+              <PropertyRef Name="Request_StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_RoleAccess_RS_Menu">
+          <End Role="RS_Menu" Type="Self.RS_Menu" Multiplicity="1" />
+          <End Role="RS_RoleAccess" Type="Self.RS_RoleAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Menu">
+              <PropertyRef Name="Menu_Id" />
+            </Principal>
+            <Dependent Role="RS_RoleAccess">
+              <PropertyRef Name="RoleAccess_MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_RoleAccess_RS_Roles">
+          <End Role="RS_Roles" Type="Self.RS_Roles" Multiplicity="1" />
+          <End Role="RS_RoleAccess" Type="Self.RS_RoleAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Roles">
+              <PropertyRef Name="Role_ID" />
+            </Principal>
+            <Dependent Role="RS_RoleAccess">
+              <PropertyRef Name="RoleAccess_Role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_SiteInfo_RS_Account">
+          <End Role="RS_Account" Type="Self.RS_Account" Multiplicity="0..1" />
+          <End Role="RS_SiteInfo" Type="Self.RS_SiteInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Account">
+              <PropertyRef Name="Account_Id" />
+            </Principal>
+            <Dependent Role="RS_SiteInfo">
+              <PropertyRef Name="SiteInfo_AccountId_Admin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_SiteInfo_RS_Site">
+          <End Role="RS_Site" Type="Self.RS_Site" Multiplicity="1" />
+          <End Role="RS_SiteInfo" Type="Self.RS_SiteInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Site">
+              <PropertyRef Name="Site_Id" />
+            </Principal>
+            <Dependent Role="RS_SiteInfo">
+              <PropertyRef Name="SiteInfo_SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_SiteSetting_RS_Site">
+          <End Role="RS_Site" Type="Self.RS_Site" Multiplicity="1" />
+          <End Role="RS_SiteSetting" Type="Self.RS_SiteSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Site">
+              <PropertyRef Name="Site_Id" />
+            </Principal>
+            <Dependent Role="RS_SiteSetting">
+              <PropertyRef Name="SiteSetting_SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Transaction_RS_Account">
+          <End Role="RS_Account" Type="Self.RS_Account" Multiplicity="0..1" />
+          <End Role="RS_Transaction" Type="Self.RS_Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Account">
+              <PropertyRef Name="Account_Id" />
+            </Principal>
+            <Dependent Role="RS_Transaction">
+              <PropertyRef Name="Transaction_AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Transaction_RS_Site">
+          <End Role="RS_Site" Type="Self.RS_Site" Multiplicity="1" />
+          <End Role="RS_Transaction" Type="Self.RS_Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Site">
+              <PropertyRef Name="Site_Id" />
+            </Principal>
+            <Dependent Role="RS_Transaction">
+              <PropertyRef Name="Transaction_SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Transaction_RS_TransactionType">
+          <End Role="RS_TransactionType" Type="Self.RS_TransactionType" Multiplicity="1" />
+          <End Role="RS_Transaction" Type="Self.RS_Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_TransactionType">
+              <PropertyRef Name="TransactionType_Id" />
+            </Principal>
+            <Dependent Role="RS_Transaction">
+              <PropertyRef Name="Transaction_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_WebService_RS_Provider">
+          <End Role="RS_Provider" Type="Self.RS_Provider" Multiplicity="0..1" />
+          <End Role="RS_WebService" Type="Self.RS_WebService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Provider">
+              <PropertyRef Name="Provider_Id" />
+            </Principal>
+            <Dependent Role="RS_WebService">
+              <PropertyRef Name="WebService_ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RSEnModelStoreContainer">
+          <EntitySet Name="RS_Account" EntityType="Self.RS_Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_AccountAddress" EntityType="Self.RS_AccountAddress" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_AccountContact" EntityType="Self.RS_AccountContact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_AccountInfo" EntityType="Self.RS_AccountInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_Issued" EntityType="Self.RS_Issued" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_Language" EntityType="Self.RS_Language" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_LanguageContent" EntityType="Self.RS_LanguageContent" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_Loc_City" EntityType="Self.RS_Loc_City" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_Loc_Country" EntityType="Self.RS_Loc_Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_Loc_Region" EntityType="Self.RS_Loc_Region" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_Loc_State" EntityType="Self.RS_Loc_State" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_Menu" EntityType="Self.RS_Menu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_Package" EntityType="Self.RS_Package" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_Provider" EntityType="Self.RS_Provider" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_Request" EntityType="Self.RS_Request" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_RoleAccess" EntityType="Self.RS_RoleAccess" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_Roles" EntityType="Self.RS_Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_ServiceType" EntityType="Self.RS_ServiceType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_Site" EntityType="Self.RS_Site" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_SiteInfo" EntityType="Self.RS_SiteInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_SiteSetting" EntityType="Self.RS_SiteSetting" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_StatusType" EntityType="Self.RS_StatusType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_Transaction" EntityType="Self.RS_Transaction" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_TransactionType" EntityType="Self.RS_TransactionType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RS_WebService" EntityType="Self.RS_WebService" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_RS_Account_RS_Account" Association="Self.FK_RS_Account_RS_Account">
+            <End Role="RS_Account" EntitySet="RS_Account" />
+            <End Role="RS_Account1" EntitySet="RS_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Account_RS_Language" Association="Self.FK_RS_Account_RS_Language">
+            <End Role="RS_Language" EntitySet="RS_Language" />
+            <End Role="RS_Account" EntitySet="RS_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Account_RS_Roles" Association="Self.FK_RS_Account_RS_Roles">
+            <End Role="RS_Roles" EntitySet="RS_Roles" />
+            <End Role="RS_Account" EntitySet="RS_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_AccountAddress_RS_Account" Association="Self.FK_RS_AccountAddress_RS_Account">
+            <End Role="RS_Account" EntitySet="RS_Account" />
+            <End Role="RS_AccountAddress" EntitySet="RS_AccountAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_AccountAddress_RS_Loc_Region" Association="Self.FK_RS_AccountAddress_RS_Loc_Region">
+            <End Role="RS_Loc_Region" EntitySet="RS_Loc_Region" />
+            <End Role="RS_AccountAddress" EntitySet="RS_AccountAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_AccountContact_RS_Account" Association="Self.FK_RS_AccountContact_RS_Account">
+            <End Role="RS_Account" EntitySet="RS_Account" />
+            <End Role="RS_AccountContact" EntitySet="RS_AccountContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_AccountInfo_RS_Account" Association="Self.FK_RS_AccountInfo_RS_Account">
+            <End Role="RS_Account" EntitySet="RS_Account" />
+            <End Role="RS_AccountInfo" EntitySet="RS_AccountInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_AccountInfo_RS_Loc_Country" Association="Self.FK_RS_AccountInfo_RS_Loc_Country">
+            <End Role="RS_Loc_Country" EntitySet="RS_Loc_Country" />
+            <End Role="RS_AccountInfo" EntitySet="RS_AccountInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_AccountInfo_RS_Loc_Country1" Association="Self.FK_RS_AccountInfo_RS_Loc_Country1">
+            <End Role="RS_Loc_Country" EntitySet="RS_Loc_Country" />
+            <End Role="RS_AccountInfo" EntitySet="RS_AccountInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Issued_RS_Request" Association="Self.FK_RS_Issued_RS_Request">
+            <End Role="RS_Request" EntitySet="RS_Request" />
+            <End Role="RS_Issued" EntitySet="RS_Issued" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_LanguageContent_RS_Language" Association="Self.FK_RS_LanguageContent_RS_Language">
+            <End Role="RS_Language" EntitySet="RS_Language" />
+            <End Role="RS_LanguageContent" EntitySet="RS_LanguageContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Loc_City_RS_Loc_State" Association="Self.FK_RS_Loc_City_RS_Loc_State">
+            <End Role="RS_Loc_State" EntitySet="RS_Loc_State" />
+            <End Role="RS_Loc_City" EntitySet="RS_Loc_City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Loc_Region_RS_Loc_City" Association="Self.FK_RS_Loc_Region_RS_Loc_City">
+            <End Role="RS_Loc_City" EntitySet="RS_Loc_City" />
+            <End Role="RS_Loc_Region" EntitySet="RS_Loc_Region" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Loc_State_RS_Loc_Country" Association="Self.FK_RS_Loc_State_RS_Loc_Country">
+            <End Role="RS_Loc_Country" EntitySet="RS_Loc_Country" />
+            <End Role="RS_Loc_State" EntitySet="RS_Loc_State" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Menu_RS_Menu" Association="Self.FK_RS_Menu_RS_Menu">
+            <End Role="RS_Menu" EntitySet="RS_Menu" />
+            <End Role="RS_Menu1" EntitySet="RS_Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Package_RS_Provider" Association="Self.FK_RS_Package_RS_Provider">
+            <End Role="RS_Provider" EntitySet="RS_Provider" />
+            <End Role="RS_Package" EntitySet="RS_Package" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Package_RS_ServiceType" Association="Self.FK_RS_Package_RS_ServiceType">
+            <End Role="RS_ServiceType" EntitySet="RS_ServiceType" />
+            <End Role="RS_Package" EntitySet="RS_Package" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Package_RS_WebService" Association="Self.FK_RS_Package_RS_WebService">
+            <End Role="RS_WebService" EntitySet="RS_WebService" />
+            <End Role="RS_Package" EntitySet="RS_Package" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Request_RS_Account" Association="Self.FK_RS_Request_RS_Account">
+            <End Role="RS_Account" EntitySet="RS_Account" />
+            <End Role="RS_Request" EntitySet="RS_Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Request_RS_Package" Association="Self.FK_RS_Request_RS_Package">
+            <End Role="RS_Package" EntitySet="RS_Package" />
+            <End Role="RS_Request" EntitySet="RS_Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Request_RS_StatusType" Association="Self.FK_RS_Request_RS_StatusType">
+            <End Role="RS_StatusType" EntitySet="RS_StatusType" />
+            <End Role="RS_Request" EntitySet="RS_Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_RoleAccess_RS_Menu" Association="Self.FK_RS_RoleAccess_RS_Menu">
+            <End Role="RS_Menu" EntitySet="RS_Menu" />
+            <End Role="RS_RoleAccess" EntitySet="RS_RoleAccess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_RoleAccess_RS_Roles" Association="Self.FK_RS_RoleAccess_RS_Roles">
+            <End Role="RS_Roles" EntitySet="RS_Roles" />
+            <End Role="RS_RoleAccess" EntitySet="RS_RoleAccess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_SiteInfo_RS_Account" Association="Self.FK_RS_SiteInfo_RS_Account">
+            <End Role="RS_Account" EntitySet="RS_Account" />
+            <End Role="RS_SiteInfo" EntitySet="RS_SiteInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_SiteInfo_RS_Site" Association="Self.FK_RS_SiteInfo_RS_Site">
+            <End Role="RS_Site" EntitySet="RS_Site" />
+            <End Role="RS_SiteInfo" EntitySet="RS_SiteInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_SiteSetting_RS_Site" Association="Self.FK_RS_SiteSetting_RS_Site">
+            <End Role="RS_Site" EntitySet="RS_Site" />
+            <End Role="RS_SiteSetting" EntitySet="RS_SiteSetting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Transaction_RS_Account" Association="Self.FK_RS_Transaction_RS_Account">
+            <End Role="RS_Account" EntitySet="RS_Account" />
+            <End Role="RS_Transaction" EntitySet="RS_Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Transaction_RS_Site" Association="Self.FK_RS_Transaction_RS_Site">
+            <End Role="RS_Site" EntitySet="RS_Site" />
+            <End Role="RS_Transaction" EntitySet="RS_Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Transaction_RS_TransactionType" Association="Self.FK_RS_Transaction_RS_TransactionType">
+            <End Role="RS_TransactionType" EntitySet="RS_TransactionType" />
+            <End Role="RS_Transaction" EntitySet="RS_Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_WebService_RS_Provider" Association="Self.FK_RS_WebService_RS_Provider">
+            <End Role="RS_Provider" EntitySet="RS_Provider" />
+            <End Role="RS_WebService" EntitySet="RS_WebService" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RSEnModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="RSEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="RS_Account" EntityType="RSEnModel.RS_Account" />
+          <EntitySet Name="RS_AccountAddress" EntityType="RSEnModel.RS_AccountAddress" />
+          <EntitySet Name="RS_AccountContact" EntityType="RSEnModel.RS_AccountContact" />
+          <EntitySet Name="RS_AccountInfo" EntityType="RSEnModel.RS_AccountInfo" />
+          <EntitySet Name="RS_Issued" EntityType="RSEnModel.RS_Issued" />
+          <EntitySet Name="RS_Language" EntityType="RSEnModel.RS_Language" />
+          <EntitySet Name="RS_LanguageContent" EntityType="RSEnModel.RS_LanguageContent" />
+          <EntitySet Name="RS_Loc_City" EntityType="RSEnModel.RS_Loc_City" />
+          <EntitySet Name="RS_Loc_Country" EntityType="RSEnModel.RS_Loc_Country" />
+          <EntitySet Name="RS_Loc_Region" EntityType="RSEnModel.RS_Loc_Region" />
+          <EntitySet Name="RS_Loc_State" EntityType="RSEnModel.RS_Loc_State" />
+          <EntitySet Name="RS_Menu" EntityType="RSEnModel.RS_Menu" />
+          <EntitySet Name="RS_Package" EntityType="RSEnModel.RS_Package" />
+          <EntitySet Name="RS_Provider" EntityType="RSEnModel.RS_Provider" />
+          <EntitySet Name="RS_Request" EntityType="RSEnModel.RS_Request" />
+          <EntitySet Name="RS_RoleAccess" EntityType="RSEnModel.RS_RoleAccess" />
+          <EntitySet Name="RS_Roles" EntityType="RSEnModel.RS_Roles" />
+          <EntitySet Name="RS_ServiceType" EntityType="RSEnModel.RS_ServiceType" />
+          <EntitySet Name="RS_Site" EntityType="RSEnModel.RS_Site" />
+          <EntitySet Name="RS_SiteInfo" EntityType="RSEnModel.RS_SiteInfo" />
+          <EntitySet Name="RS_SiteSetting" EntityType="RSEnModel.RS_SiteSetting" />
+          <EntitySet Name="RS_StatusType" EntityType="RSEnModel.RS_StatusType" />
+          <EntitySet Name="RS_Transaction" EntityType="RSEnModel.RS_Transaction" />
+          <EntitySet Name="RS_TransactionType" EntityType="RSEnModel.RS_TransactionType" />
+          <EntitySet Name="RS_WebService" EntityType="RSEnModel.RS_WebService" />
+          <EntitySet Name="sysdiagrams" EntityType="RSEnModel.sysdiagrams" />
+          <AssociationSet Name="FK_RS_Account_RS_Account" Association="RSEnModel.FK_RS_Account_RS_Account">
+            <End Role="RS_Account" EntitySet="RS_Account" />
+            <End Role="RS_Account1" EntitySet="RS_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Account_RS_Language" Association="RSEnModel.FK_RS_Account_RS_Language">
+            <End Role="RS_Language" EntitySet="RS_Language" />
+            <End Role="RS_Account" EntitySet="RS_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Account_RS_Roles" Association="RSEnModel.FK_RS_Account_RS_Roles">
+            <End Role="RS_Roles" EntitySet="RS_Roles" />
+            <End Role="RS_Account" EntitySet="RS_Account" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_AccountAddress_RS_Account" Association="RSEnModel.FK_RS_AccountAddress_RS_Account">
+            <End Role="RS_Account" EntitySet="RS_Account" />
+            <End Role="RS_AccountAddress" EntitySet="RS_AccountAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_AccountContact_RS_Account" Association="RSEnModel.FK_RS_AccountContact_RS_Account">
+            <End Role="RS_Account" EntitySet="RS_Account" />
+            <End Role="RS_AccountContact" EntitySet="RS_AccountContact" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_AccountInfo_RS_Account" Association="RSEnModel.FK_RS_AccountInfo_RS_Account">
+            <End Role="RS_Account" EntitySet="RS_Account" />
+            <End Role="RS_AccountInfo" EntitySet="RS_AccountInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Request_RS_Account" Association="RSEnModel.FK_RS_Request_RS_Account">
+            <End Role="RS_Account" EntitySet="RS_Account" />
+            <End Role="RS_Request" EntitySet="RS_Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_SiteInfo_RS_Account" Association="RSEnModel.FK_RS_SiteInfo_RS_Account">
+            <End Role="RS_Account" EntitySet="RS_Account" />
+            <End Role="RS_SiteInfo" EntitySet="RS_SiteInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Transaction_RS_Account" Association="RSEnModel.FK_RS_Transaction_RS_Account">
+            <End Role="RS_Account" EntitySet="RS_Account" />
+            <End Role="RS_Transaction" EntitySet="RS_Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_AccountAddress_RS_Loc_Region" Association="RSEnModel.FK_RS_AccountAddress_RS_Loc_Region">
+            <End Role="RS_Loc_Region" EntitySet="RS_Loc_Region" />
+            <End Role="RS_AccountAddress" EntitySet="RS_AccountAddress" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_AccountInfo_RS_Loc_Country" Association="RSEnModel.FK_RS_AccountInfo_RS_Loc_Country">
+            <End Role="RS_Loc_Country" EntitySet="RS_Loc_Country" />
+            <End Role="RS_AccountInfo" EntitySet="RS_AccountInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_AccountInfo_RS_Loc_Country1" Association="RSEnModel.FK_RS_AccountInfo_RS_Loc_Country1">
+            <End Role="RS_Loc_Country" EntitySet="RS_Loc_Country" />
+            <End Role="RS_AccountInfo" EntitySet="RS_AccountInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Issued_RS_Request" Association="RSEnModel.FK_RS_Issued_RS_Request">
+            <End Role="RS_Request" EntitySet="RS_Request" />
+            <End Role="RS_Issued" EntitySet="RS_Issued" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_LanguageContent_RS_Language" Association="RSEnModel.FK_RS_LanguageContent_RS_Language">
+            <End Role="RS_Language" EntitySet="RS_Language" />
+            <End Role="RS_LanguageContent" EntitySet="RS_LanguageContent" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Loc_City_RS_Loc_State" Association="RSEnModel.FK_RS_Loc_City_RS_Loc_State">
+            <End Role="RS_Loc_State" EntitySet="RS_Loc_State" />
+            <End Role="RS_Loc_City" EntitySet="RS_Loc_City" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Loc_Region_RS_Loc_City" Association="RSEnModel.FK_RS_Loc_Region_RS_Loc_City">
+            <End Role="RS_Loc_City" EntitySet="RS_Loc_City" />
+            <End Role="RS_Loc_Region" EntitySet="RS_Loc_Region" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Loc_State_RS_Loc_Country" Association="RSEnModel.FK_RS_Loc_State_RS_Loc_Country">
+            <End Role="RS_Loc_Country" EntitySet="RS_Loc_Country" />
+            <End Role="RS_Loc_State" EntitySet="RS_Loc_State" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Menu_RS_Menu" Association="RSEnModel.FK_RS_Menu_RS_Menu">
+            <End Role="RS_Menu" EntitySet="RS_Menu" />
+            <End Role="RS_Menu1" EntitySet="RS_Menu" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_RoleAccess_RS_Menu" Association="RSEnModel.FK_RS_RoleAccess_RS_Menu">
+            <End Role="RS_Menu" EntitySet="RS_Menu" />
+            <End Role="RS_RoleAccess" EntitySet="RS_RoleAccess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Package_RS_Provider" Association="RSEnModel.FK_RS_Package_RS_Provider">
+            <End Role="RS_Provider" EntitySet="RS_Provider" />
+            <End Role="RS_Package" EntitySet="RS_Package" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Package_RS_ServiceType" Association="RSEnModel.FK_RS_Package_RS_ServiceType">
+            <End Role="RS_ServiceType" EntitySet="RS_ServiceType" />
+            <End Role="RS_Package" EntitySet="RS_Package" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Package_RS_WebService" Association="RSEnModel.FK_RS_Package_RS_WebService">
+            <End Role="RS_WebService" EntitySet="RS_WebService" />
+            <End Role="RS_Package" EntitySet="RS_Package" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Request_RS_Package" Association="RSEnModel.FK_RS_Request_RS_Package">
+            <End Role="RS_Package" EntitySet="RS_Package" />
+            <End Role="RS_Request" EntitySet="RS_Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_WebService_RS_Provider" Association="RSEnModel.FK_RS_WebService_RS_Provider">
+            <End Role="RS_Provider" EntitySet="RS_Provider" />
+            <End Role="RS_WebService" EntitySet="RS_WebService" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Request_RS_StatusType" Association="RSEnModel.FK_RS_Request_RS_StatusType">
+            <End Role="RS_StatusType" EntitySet="RS_StatusType" />
+            <End Role="RS_Request" EntitySet="RS_Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_RoleAccess_RS_Roles" Association="RSEnModel.FK_RS_RoleAccess_RS_Roles">
+            <End Role="RS_Roles" EntitySet="RS_Roles" />
+            <End Role="RS_RoleAccess" EntitySet="RS_RoleAccess" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_SiteInfo_RS_Site" Association="RSEnModel.FK_RS_SiteInfo_RS_Site">
+            <End Role="RS_Site" EntitySet="RS_Site" />
+            <End Role="RS_SiteInfo" EntitySet="RS_SiteInfo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_SiteSetting_RS_Site" Association="RSEnModel.FK_RS_SiteSetting_RS_Site">
+            <End Role="RS_Site" EntitySet="RS_Site" />
+            <End Role="RS_SiteSetting" EntitySet="RS_SiteSetting" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Transaction_RS_Site" Association="RSEnModel.FK_RS_Transaction_RS_Site">
+            <End Role="RS_Site" EntitySet="RS_Site" />
+            <End Role="RS_Transaction" EntitySet="RS_Transaction" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RS_Transaction_RS_TransactionType" Association="RSEnModel.FK_RS_Transaction_RS_TransactionType">
+            <End Role="RS_TransactionType" EntitySet="RS_TransactionType" />
+            <End Role="RS_Transaction" EntitySet="RS_Transaction" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="RS_Account">
+          <Key>
+            <PropertyRef Name="Account_Id" />
+          </Key>
+          <Property Name="Account_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Account_ParentId" Type="Int32" />
+          <Property Name="Account_Username" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Account_Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Account_DisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Account_Token" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Account_LastLogin" Type="DateTime" Precision="3" />
+          <Property Name="Account_Active" Type="Boolean" Nullable="false" />
+          <Property Name="Account_RoleId" Type="Int32" />
+          <Property Name="Account_Commision" Type="Int32" />
+          <Property Name="Account_LanguageId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RS_Account1" Relationship="RSEnModel.FK_RS_Account_RS_Account" FromRole="RS_Account" ToRole="RS_Account1" />
+          <NavigationProperty Name="RS_Account2" Relationship="RSEnModel.FK_RS_Account_RS_Account" FromRole="RS_Account1" ToRole="RS_Account" />
+          <NavigationProperty Name="RS_Language" Relationship="RSEnModel.FK_RS_Account_RS_Language" FromRole="RS_Account" ToRole="RS_Language" />
+          <NavigationProperty Name="RS_Roles" Relationship="RSEnModel.FK_RS_Account_RS_Roles" FromRole="RS_Account" ToRole="RS_Roles" />
+          <NavigationProperty Name="RS_AccountAddress" Relationship="RSEnModel.FK_RS_AccountAddress_RS_Account" FromRole="RS_Account" ToRole="RS_AccountAddress" />
+          <NavigationProperty Name="RS_AccountContact" Relationship="RSEnModel.FK_RS_AccountContact_RS_Account" FromRole="RS_Account" ToRole="RS_AccountContact" />
+          <NavigationProperty Name="RS_AccountInfo" Relationship="RSEnModel.FK_RS_AccountInfo_RS_Account" FromRole="RS_Account" ToRole="RS_AccountInfo" />
+          <NavigationProperty Name="RS_Request" Relationship="RSEnModel.FK_RS_Request_RS_Account" FromRole="RS_Account" ToRole="RS_Request" />
+          <NavigationProperty Name="RS_SiteInfo" Relationship="RSEnModel.FK_RS_SiteInfo_RS_Account" FromRole="RS_Account" ToRole="RS_SiteInfo" />
+          <NavigationProperty Name="RS_Transaction" Relationship="RSEnModel.FK_RS_Transaction_RS_Account" FromRole="RS_Account" ToRole="RS_Transaction" />
+        </EntityType>
+        <EntityType Name="RS_AccountAddress">
+          <Key>
+            <PropertyRef Name="AccountAddress_Id" />
+          </Key>
+          <Property Name="AccountAddress_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountAddress_Title" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AccountAddress_AccountId" Type="Int32" />
+          <Property Name="AccountAddress_CountryId" Type="Int32" />
+          <Property Name="AccountAddress_StateId" Type="Int32" />
+          <Property Name="AccountAddress_CityId" Type="Int32" />
+          <Property Name="AccountAddress_RegionId" Type="Int32" />
+          <Property Name="AccountAddress_Address" Type="Int32" />
+          <Property Name="AccountAddress_ZipCode" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="AccountAddress_Default" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="RS_Account" Relationship="RSEnModel.FK_RS_AccountAddress_RS_Account" FromRole="RS_AccountAddress" ToRole="RS_Account" />
+          <NavigationProperty Name="RS_Loc_Region" Relationship="RSEnModel.FK_RS_AccountAddress_RS_Loc_Region" FromRole="RS_AccountAddress" ToRole="RS_Loc_Region" />
+        </EntityType>
+        <EntityType Name="RS_AccountContact">
+          <Key>
+            <PropertyRef Name="AccountContact_Id" />
+          </Key>
+          <Property Name="AccountContact_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountContact_AccountId" Type="Int32" Nullable="false" />
+          <Property Name="AccountContact_Value" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="AccountContact_Type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="AccountContact_Date" Type="DateTime" Precision="0" />
+          <Property Name="AccountContact_Active" Type="Boolean" />
+          <Property Name="AccountContact_Primary" Type="Boolean" />
+          <NavigationProperty Name="RS_Account" Relationship="RSEnModel.FK_RS_AccountContact_RS_Account" FromRole="RS_AccountContact" ToRole="RS_Account" />
+        </EntityType>
+        <EntityType Name="RS_AccountInfo">
+          <Key>
+            <PropertyRef Name="AccountInfo_Id" />
+          </Key>
+          <Property Name="AccountInfo_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountInfo_AccountId" Type="Int32" Nullable="false" />
+          <Property Name="AccountInfo_FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountInfo_LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountInfo_Gender" Type="String" MaxLength="1" FixedLength="true" Unicode="true" />
+          <Property Name="AccountInfo_Country_Nationality" Type="Int32" />
+          <Property Name="AccountInfo_Country_BirthPlace" Type="Int32" />
+          <Property Name="AccountInfo_PassId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="AccountInfo_NationalId" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="AccountInfo_CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountInfo_Birthday" Type="DateTime" Precision="0" />
+          <Property Name="AccountInfo_Picture" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountInfo_RegisterDate" Type="DateTime" Precision="0" />
+          <Property Name="AccountInfo_EditDate" Type="DateTime" Precision="3" />
+          <Property Name="AccountInfo_Father" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AccountInfo_Mother" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RS_Account" Relationship="RSEnModel.FK_RS_AccountInfo_RS_Account" FromRole="RS_AccountInfo" ToRole="RS_Account" />
+          <NavigationProperty Name="RS_Loc_Country" Relationship="RSEnModel.FK_RS_AccountInfo_RS_Loc_Country" FromRole="RS_AccountInfo" ToRole="RS_Loc_Country" />
+          <NavigationProperty Name="RS_Loc_Country1" Relationship="RSEnModel.FK_RS_AccountInfo_RS_Loc_Country1" FromRole="RS_AccountInfo" ToRole="RS_Loc_Country" />
+        </EntityType>
+        <EntityType Name="RS_Issued">
+          <Key>
+            <PropertyRef Name="Issued_Id" />
+          </Key>
+          <Property Name="Issued_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Issued_RequestId" Type="Int32" Nullable="false" />
+          <Property Name="Issued_No" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Issued_Price" Type="Decimal" Precision="6" Scale="2" />
+          <Property Name="Issued_StartDate" Type="DateTime" Precision="0" />
+          <Property Name="Issued_OriginalPolicyUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Issued_Date" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="RS_Request" Relationship="RSEnModel.FK_RS_Issued_RS_Request" FromRole="RS_Issued" ToRole="RS_Request" />
+        </EntityType>
+        <EntityType Name="RS_Language">
+          <Key>
+            <PropertyRef Name="Language_Id" />
+          </Key>
+          <Property Name="Language_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Language_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Language_DisplayName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Language_Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Language_Iso" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <Property Name="Language_Active" Type="Boolean" Nullable="false" />
+          <Property Name="Language_Direction" Type="String" MaxLength="3" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RS_Account" Relationship="RSEnModel.FK_RS_Account_RS_Language" FromRole="RS_Language" ToRole="RS_Account" />
+          <NavigationProperty Name="RS_LanguageContent" Relationship="RSEnModel.FK_RS_LanguageContent_RS_Language" FromRole="RS_Language" ToRole="RS_LanguageContent" />
+        </EntityType>
+        <EntityType Name="RS_LanguageContent">
+          <Key>
+            <PropertyRef Name="LanguageContent_Id" />
+          </Key>
+          <Property Name="LanguageContent_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LanguageContent_Group" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="LanguageContent_TagName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LanguageContent_EN" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LanguageContent_TR" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LanguageContent_RU" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RS_Language" Relationship="RSEnModel.FK_RS_LanguageContent_RS_Language" FromRole="RS_LanguageContent" ToRole="RS_Language" />
+        </EntityType>
+        <EntityType Name="RS_Loc_City">
+          <Key>
+            <PropertyRef Name="City_Id" />
+          </Key>
+          <Property Name="City_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="City_StateId" Type="Int32" Nullable="false" />
+          <Property Name="City_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="City_MapLat" Type="Decimal" Precision="9" Scale="6" />
+          <Property Name="City_MapLan" Type="Decimal" Precision="9" Scale="6" />
+          <Property Name="City_WsCode" Type="Int32" />
+          <NavigationProperty Name="RS_Loc_State" Relationship="RSEnModel.FK_RS_Loc_City_RS_Loc_State" FromRole="RS_Loc_City" ToRole="RS_Loc_State" />
+          <NavigationProperty Name="RS_Loc_Region" Relationship="RSEnModel.FK_RS_Loc_Region_RS_Loc_City" FromRole="RS_Loc_City" ToRole="RS_Loc_Region" />
+        </EntityType>
+        <EntityType Name="RS_Loc_Country">
+          <Key>
+            <PropertyRef Name="Country_Id" />
+          </Key>
+          <Property Name="Country_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Country_Name" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Country_Iso" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Country_coefficient" Type="Decimal" Precision="3" Scale="2" />
+          <NavigationProperty Name="RS_AccountInfo" Relationship="RSEnModel.FK_RS_AccountInfo_RS_Loc_Country" FromRole="RS_Loc_Country" ToRole="RS_AccountInfo" />
+          <NavigationProperty Name="RS_AccountInfo1" Relationship="RSEnModel.FK_RS_AccountInfo_RS_Loc_Country1" FromRole="RS_Loc_Country" ToRole="RS_AccountInfo" />
+          <NavigationProperty Name="RS_Loc_State" Relationship="RSEnModel.FK_RS_Loc_State_RS_Loc_Country" FromRole="RS_Loc_Country" ToRole="RS_Loc_State" />
+        </EntityType>
+        <EntityType Name="RS_Loc_Region">
+          <Key>
+            <PropertyRef Name="Region_Id" />
+          </Key>
+          <Property Name="Region_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Region_CityId" Type="Int32" Nullable="false" />
+          <Property Name="Region_Name" Type="String" Nullable="false" MaxLength="60" FixedLength="false" Unicode="true" />
+          <Property Name="Region_WsCode" Type="Int32" />
+          <NavigationProperty Name="RS_AccountAddress" Relationship="RSEnModel.FK_RS_AccountAddress_RS_Loc_Region" FromRole="RS_Loc_Region" ToRole="RS_AccountAddress" />
+          <NavigationProperty Name="RS_Loc_City" Relationship="RSEnModel.FK_RS_Loc_Region_RS_Loc_City" FromRole="RS_Loc_Region" ToRole="RS_Loc_City" />
+        </EntityType>
+        <EntityType Name="RS_Loc_State">
+          <Key>
+            <PropertyRef Name="State_Id" />
+          </Key>
+          <Property Name="State_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="State_CountryId" Type="Int32" />
+          <Property Name="State_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="State_WsCode" Type="Int32" />
+          <NavigationProperty Name="RS_Loc_City" Relationship="RSEnModel.FK_RS_Loc_City_RS_Loc_State" FromRole="RS_Loc_State" ToRole="RS_Loc_City" />
+          <NavigationProperty Name="RS_Loc_Country" Relationship="RSEnModel.FK_RS_Loc_State_RS_Loc_Country" FromRole="RS_Loc_State" ToRole="RS_Loc_Country" />
+        </EntityType>
+        <EntityType Name="RS_Menu">
+          <Key>
+            <PropertyRef Name="Menu_Id" />
+          </Key>
+          <Property Name="Menu_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Menu_ParentId" Type="Int32" />
+          <Property Name="Menu_FormName" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Menu_Url" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Menu_Icon" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Menu_Class" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Menu_Active" Type="Boolean" Nullable="false" />
+          <Property Name="Menu_Type" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Menu_Order" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RS_Menu1" Relationship="RSEnModel.FK_RS_Menu_RS_Menu" FromRole="RS_Menu" ToRole="RS_Menu1" />
+          <NavigationProperty Name="RS_Menu2" Relationship="RSEnModel.FK_RS_Menu_RS_Menu" FromRole="RS_Menu1" ToRole="RS_Menu" />
+          <NavigationProperty Name="RS_RoleAccess" Relationship="RSEnModel.FK_RS_RoleAccess_RS_Menu" FromRole="RS_Menu" ToRole="RS_RoleAccess" />
+        </EntityType>
+        <EntityType Name="RS_Package">
+          <Key>
+            <PropertyRef Name="Package_Id" />
+          </Key>
+          <Property Name="Package_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Package_ProviderId" Type="Int32" />
+          <Property Name="Package_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Package_ServiceTypeId" Type="Int32" />
+          <Property Name="Package_Coefficient" Type="Decimal" Precision="3" Scale="2" />
+          <Property Name="Package_WebServiceId" Type="Int32" />
+          <Property Name="Package_Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="RS_Provider" Relationship="RSEnModel.FK_RS_Package_RS_Provider" FromRole="RS_Package" ToRole="RS_Provider" />
+          <NavigationProperty Name="RS_ServiceType" Relationship="RSEnModel.FK_RS_Package_RS_ServiceType" FromRole="RS_Package" ToRole="RS_ServiceType" />
+          <NavigationProperty Name="RS_WebService" Relationship="RSEnModel.FK_RS_Package_RS_WebService" FromRole="RS_Package" ToRole="RS_WebService" />
+          <NavigationProperty Name="RS_Request" Relationship="RSEnModel.FK_RS_Request_RS_Package" FromRole="RS_Package" ToRole="RS_Request" />
+        </EntityType>
+        <EntityType Name="RS_Provider">
+          <Key>
+            <PropertyRef Name="Provider_Id" />
+          </Key>
+          <Property Name="Provider_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Provider_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Provider_Logo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Provider_Active" Type="Boolean" />
+          <Property Name="Provider_Website" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RS_Package" Relationship="RSEnModel.FK_RS_Package_RS_Provider" FromRole="RS_Provider" ToRole="RS_Package" />
+          <NavigationProperty Name="RS_WebService" Relationship="RSEnModel.FK_RS_WebService_RS_Provider" FromRole="RS_Provider" ToRole="RS_WebService" />
+        </EntityType>
+        <EntityType Name="RS_Request">
+          <Key>
+            <PropertyRef Name="Request_Id" />
+          </Key>
+          <Property Name="Request_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Request_SiteId" Type="Int32" Nullable="false" />
+          <Property Name="Request_PackageId" Type="Int32" Nullable="false" />
+          <Property Name="Request_StartDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Request_DurationDay" Type="Int32" Nullable="false" />
+          <Property Name="Request_AccountId" Type="Int32" />
+          <Property Name="Request_StatusId" Type="Int32" Nullable="false" />
+          <Property Name="Request_TempNo" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="Request_SubmitDate" Type="DateTime" Precision="0" />
+          <Property Name="Request_Weight" Type="Int32" />
+          <Property Name="Request_Tall" Type="Int32" />
+          <NavigationProperty Name="RS_Account" Relationship="RSEnModel.FK_RS_Request_RS_Account" FromRole="RS_Request" ToRole="RS_Account" />
+          <NavigationProperty Name="RS_Issued" Relationship="RSEnModel.FK_RS_Issued_RS_Request" FromRole="RS_Request" ToRole="RS_Issued" />
+          <NavigationProperty Name="RS_Package" Relationship="RSEnModel.FK_RS_Request_RS_Package" FromRole="RS_Request" ToRole="RS_Package" />
+          <NavigationProperty Name="RS_StatusType" Relationship="RSEnModel.FK_RS_Request_RS_StatusType" FromRole="RS_Request" ToRole="RS_StatusType" />
+        </EntityType>
+        <EntityType Name="RS_RoleAccess">
+          <Key>
+            <PropertyRef Name="RoleAccess_Id" />
+          </Key>
+          <Property Name="RoleAccess_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleAccess_MenuId" Type="Int32" Nullable="false" />
+          <Property Name="RoleAccess_Role_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RS_Menu" Relationship="RSEnModel.FK_RS_RoleAccess_RS_Menu" FromRole="RS_RoleAccess" ToRole="RS_Menu" />
+          <NavigationProperty Name="RS_Roles" Relationship="RSEnModel.FK_RS_RoleAccess_RS_Roles" FromRole="RS_RoleAccess" ToRole="RS_Roles" />
+        </EntityType>
+        <EntityType Name="RS_Roles">
+          <Key>
+            <PropertyRef Name="Role_ID" />
+          </Key>
+          <Property Name="Role_ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Role_Name" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Role_Title" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RS_Account" Relationship="RSEnModel.FK_RS_Account_RS_Roles" FromRole="RS_Roles" ToRole="RS_Account" />
+          <NavigationProperty Name="RS_RoleAccess" Relationship="RSEnModel.FK_RS_RoleAccess_RS_Roles" FromRole="RS_Roles" ToRole="RS_RoleAccess" />
+        </EntityType>
+        <EntityType Name="RS_ServiceType">
+          <Key>
+            <PropertyRef Name="ServiceType_Id" />
+          </Key>
+          <Property Name="ServiceType_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ServiceType_Name" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ServiceType_Active" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="RS_Package" Relationship="RSEnModel.FK_RS_Package_RS_ServiceType" FromRole="RS_ServiceType" ToRole="RS_Package" />
+        </EntityType>
+        <EntityType Name="RS_Site">
+          <Key>
+            <PropertyRef Name="Site_Id" />
+          </Key>
+          <Property Name="Site_Id" Type="Int32" Nullable="false" />
+          <Property Name="Site_Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Site_Url" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Site_Hosts" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Site_LanguageId_Default" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RS_SiteInfo" Relationship="RSEnModel.FK_RS_SiteInfo_RS_Site" FromRole="RS_Site" ToRole="RS_SiteInfo" />
+          <NavigationProperty Name="RS_SiteSetting" Relationship="RSEnModel.FK_RS_SiteSetting_RS_Site" FromRole="RS_Site" ToRole="RS_SiteSetting" />
+          <NavigationProperty Name="RS_Transaction" Relationship="RSEnModel.FK_RS_Transaction_RS_Site" FromRole="RS_Site" ToRole="RS_Transaction" />
+        </EntityType>
+        <EntityType Name="RS_SiteInfo">
+          <Key>
+            <PropertyRef Name="SiteInfo_Id" />
+          </Key>
+          <Property Name="SiteInfo_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SiteInfo_Logo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SiteInfo_LocalName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SiteInfo_AccountId_Admin" Type="Int32" />
+          <Property Name="SiteInfo_SiteId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="RS_Account" Relationship="RSEnModel.FK_RS_SiteInfo_RS_Account" FromRole="RS_SiteInfo" ToRole="RS_Account" />
+          <NavigationProperty Name="RS_Site" Relationship="RSEnModel.FK_RS_SiteInfo_RS_Site" FromRole="RS_SiteInfo" ToRole="RS_Site" />
+        </EntityType>
+        <EntityType Name="RS_SiteSetting">
+          <Key>
+            <PropertyRef Name="SiteSetting_Id" />
+          </Key>
+          <Property Name="SiteSetting_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SiteSetting_SiteId" Type="Int32" Nullable="false" />
+          <Property Name="SiteSetting_Field" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="SiteSetting_Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RS_Site" Relationship="RSEnModel.FK_RS_SiteSetting_RS_Site" FromRole="RS_SiteSetting" ToRole="RS_Site" />
+        </EntityType>
+        <EntityType Name="RS_StatusType">
+          <Key>
+            <PropertyRef Name="StatusType_Id" />
+          </Key>
+          <Property Name="StatusType_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StatusType_Name" Type="String" MaxLength="15" FixedLength="false" Unicode="true" />
+          <Property Name="StatusType_Flag" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StatusType_Color" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="StatusType_Class" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RS_Request" Relationship="RSEnModel.FK_RS_Request_RS_StatusType" FromRole="RS_StatusType" ToRole="RS_Request" />
+        </EntityType>
+        <EntityType Name="RS_Transaction">
+          <Key>
+            <PropertyRef Name="Transaction_Id" />
+          </Key>
+          <Property Name="Transaction_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Transaction_SiteId" Type="Int32" Nullable="false" />
+          <Property Name="Transaction_DocumentNo" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="Transaction_AccountId" Type="Int32" />
+          <Property Name="Transaction_Date" Type="DateTime" Precision="0" />
+          <Property Name="Transaction_Description" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="Transaction_Type" Type="Int32" Nullable="false" />
+          <Property Name="Transaction_Debtor" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <Property Name="Transaction_Creditor" Type="Decimal" Nullable="false" Precision="8" Scale="2" />
+          <NavigationProperty Name="RS_Account" Relationship="RSEnModel.FK_RS_Transaction_RS_Account" FromRole="RS_Transaction" ToRole="RS_Account" />
+          <NavigationProperty Name="RS_Site" Relationship="RSEnModel.FK_RS_Transaction_RS_Site" FromRole="RS_Transaction" ToRole="RS_Site" />
+          <NavigationProperty Name="RS_TransactionType" Relationship="RSEnModel.FK_RS_Transaction_RS_TransactionType" FromRole="RS_Transaction" ToRole="RS_TransactionType" />
+        </EntityType>
+        <EntityType Name="RS_TransactionType">
+          <Key>
+            <PropertyRef Name="TransactionType_Id" />
+          </Key>
+          <Property Name="TransactionType_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TransactionType_Name" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TransactionType_Class" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TransactionType_Icon" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="TransactionType_SortOrder" Type="Int32" />
+          <Property Name="TransactionType_GroupId" Type="Int32" />
+          <NavigationProperty Name="RS_Transaction" Relationship="RSEnModel.FK_RS_Transaction_RS_TransactionType" FromRole="RS_TransactionType" ToRole="RS_Transaction" />
+        </EntityType>
+        <EntityType Name="RS_WebService">
+          <Key>
+            <PropertyRef Name="WebService_Id" />
+          </Key>
+          <Property Name="WebService_Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="WebService_ProviderId" Type="Int32" />
+          <Property Name="WebService_Url" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="WebService_Username" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WebService_Password" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="WebService_ApiToken" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="RS_Package" Relationship="RSEnModel.FK_RS_Package_RS_WebService" FromRole="RS_WebService" ToRole="RS_Package" />
+          <NavigationProperty Name="RS_Provider" Relationship="RSEnModel.FK_RS_WebService_RS_Provider" FromRole="RS_WebService" ToRole="RS_Provider" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <Association Name="FK_RS_Account_RS_Account">
+          <End Type="RSEnModel.RS_Account" Role="RS_Account" Multiplicity="0..1" />
+          <End Type="RSEnModel.RS_Account" Role="RS_Account1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Account">
+              <PropertyRef Name="Account_Id" />
+            </Principal>
+            <Dependent Role="RS_Account1">
+              <PropertyRef Name="Account_ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Account_RS_Language">
+          <End Type="RSEnModel.RS_Language" Role="RS_Language" Multiplicity="1" />
+          <End Type="RSEnModel.RS_Account" Role="RS_Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Language">
+              <PropertyRef Name="Language_Id" />
+            </Principal>
+            <Dependent Role="RS_Account">
+              <PropertyRef Name="Account_LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Account_RS_Roles">
+          <End Type="RSEnModel.RS_Roles" Role="RS_Roles" Multiplicity="0..1" />
+          <End Type="RSEnModel.RS_Account" Role="RS_Account" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Roles">
+              <PropertyRef Name="Role_ID" />
+            </Principal>
+            <Dependent Role="RS_Account">
+              <PropertyRef Name="Account_RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_AccountAddress_RS_Account">
+          <End Type="RSEnModel.RS_Account" Role="RS_Account" Multiplicity="0..1" />
+          <End Type="RSEnModel.RS_AccountAddress" Role="RS_AccountAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Account">
+              <PropertyRef Name="Account_Id" />
+            </Principal>
+            <Dependent Role="RS_AccountAddress">
+              <PropertyRef Name="AccountAddress_AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_AccountContact_RS_Account">
+          <End Type="RSEnModel.RS_Account" Role="RS_Account" Multiplicity="1" />
+          <End Type="RSEnModel.RS_AccountContact" Role="RS_AccountContact" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Account">
+              <PropertyRef Name="Account_Id" />
+            </Principal>
+            <Dependent Role="RS_AccountContact">
+              <PropertyRef Name="AccountContact_AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_AccountInfo_RS_Account">
+          <End Type="RSEnModel.RS_Account" Role="RS_Account" Multiplicity="1" />
+          <End Type="RSEnModel.RS_AccountInfo" Role="RS_AccountInfo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Account">
+              <PropertyRef Name="Account_Id" />
+            </Principal>
+            <Dependent Role="RS_AccountInfo">
+              <PropertyRef Name="AccountInfo_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Request_RS_Account">
+          <End Type="RSEnModel.RS_Account" Role="RS_Account" Multiplicity="0..1" />
+          <End Type="RSEnModel.RS_Request" Role="RS_Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Account">
+              <PropertyRef Name="Account_Id" />
+            </Principal>
+            <Dependent Role="RS_Request">
+              <PropertyRef Name="Request_AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_SiteInfo_RS_Account">
+          <End Type="RSEnModel.RS_Account" Role="RS_Account" Multiplicity="0..1" />
+          <End Type="RSEnModel.RS_SiteInfo" Role="RS_SiteInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Account">
+              <PropertyRef Name="Account_Id" />
+            </Principal>
+            <Dependent Role="RS_SiteInfo">
+              <PropertyRef Name="SiteInfo_AccountId_Admin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Transaction_RS_Account">
+          <End Type="RSEnModel.RS_Account" Role="RS_Account" Multiplicity="0..1" />
+          <End Type="RSEnModel.RS_Transaction" Role="RS_Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Account">
+              <PropertyRef Name="Account_Id" />
+            </Principal>
+            <Dependent Role="RS_Transaction">
+              <PropertyRef Name="Transaction_AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_AccountAddress_RS_Loc_Region">
+          <End Type="RSEnModel.RS_Loc_Region" Role="RS_Loc_Region" Multiplicity="0..1" />
+          <End Type="RSEnModel.RS_AccountAddress" Role="RS_AccountAddress" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Loc_Region">
+              <PropertyRef Name="Region_Id" />
+            </Principal>
+            <Dependent Role="RS_AccountAddress">
+              <PropertyRef Name="AccountAddress_RegionId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_AccountInfo_RS_Loc_Country">
+          <End Type="RSEnModel.RS_Loc_Country" Role="RS_Loc_Country" Multiplicity="0..1" />
+          <End Type="RSEnModel.RS_AccountInfo" Role="RS_AccountInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Loc_Country">
+              <PropertyRef Name="Country_Id" />
+            </Principal>
+            <Dependent Role="RS_AccountInfo">
+              <PropertyRef Name="AccountInfo_Country_Nationality" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_AccountInfo_RS_Loc_Country1">
+          <End Type="RSEnModel.RS_Loc_Country" Role="RS_Loc_Country" Multiplicity="0..1" />
+          <End Type="RSEnModel.RS_AccountInfo" Role="RS_AccountInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Loc_Country">
+              <PropertyRef Name="Country_Id" />
+            </Principal>
+            <Dependent Role="RS_AccountInfo">
+              <PropertyRef Name="AccountInfo_Country_BirthPlace" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Issued_RS_Request">
+          <End Type="RSEnModel.RS_Request" Role="RS_Request" Multiplicity="1" />
+          <End Type="RSEnModel.RS_Issued" Role="RS_Issued" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Request">
+              <PropertyRef Name="Request_Id" />
+            </Principal>
+            <Dependent Role="RS_Issued">
+              <PropertyRef Name="Issued_RequestId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_LanguageContent_RS_Language">
+          <End Type="RSEnModel.RS_Language" Role="RS_Language" Multiplicity="1" />
+          <End Type="RSEnModel.RS_LanguageContent" Role="RS_LanguageContent" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Language">
+              <PropertyRef Name="Language_Id" />
+            </Principal>
+            <Dependent Role="RS_LanguageContent">
+              <PropertyRef Name="LanguageContent_Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Loc_City_RS_Loc_State">
+          <End Type="RSEnModel.RS_Loc_State" Role="RS_Loc_State" Multiplicity="1" />
+          <End Type="RSEnModel.RS_Loc_City" Role="RS_Loc_City" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Loc_State">
+              <PropertyRef Name="State_Id" />
+            </Principal>
+            <Dependent Role="RS_Loc_City">
+              <PropertyRef Name="City_StateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Loc_Region_RS_Loc_City">
+          <End Type="RSEnModel.RS_Loc_City" Role="RS_Loc_City" Multiplicity="1" />
+          <End Type="RSEnModel.RS_Loc_Region" Role="RS_Loc_Region" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Loc_City">
+              <PropertyRef Name="City_Id" />
+            </Principal>
+            <Dependent Role="RS_Loc_Region">
+              <PropertyRef Name="Region_CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Loc_State_RS_Loc_Country">
+          <End Type="RSEnModel.RS_Loc_Country" Role="RS_Loc_Country" Multiplicity="0..1" />
+          <End Type="RSEnModel.RS_Loc_State" Role="RS_Loc_State" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Loc_Country">
+              <PropertyRef Name="Country_Id" />
+            </Principal>
+            <Dependent Role="RS_Loc_State">
+              <PropertyRef Name="State_CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Menu_RS_Menu">
+          <End Type="RSEnModel.RS_Menu" Role="RS_Menu" Multiplicity="0..1" />
+          <End Type="RSEnModel.RS_Menu" Role="RS_Menu1" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Menu">
+              <PropertyRef Name="Menu_Id" />
+            </Principal>
+            <Dependent Role="RS_Menu1">
+              <PropertyRef Name="Menu_ParentId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_RoleAccess_RS_Menu">
+          <End Type="RSEnModel.RS_Menu" Role="RS_Menu" Multiplicity="1" />
+          <End Type="RSEnModel.RS_RoleAccess" Role="RS_RoleAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Menu">
+              <PropertyRef Name="Menu_Id" />
+            </Principal>
+            <Dependent Role="RS_RoleAccess">
+              <PropertyRef Name="RoleAccess_MenuId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Package_RS_Provider">
+          <End Type="RSEnModel.RS_Provider" Role="RS_Provider" Multiplicity="0..1" />
+          <End Type="RSEnModel.RS_Package" Role="RS_Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Provider">
+              <PropertyRef Name="Provider_Id" />
+            </Principal>
+            <Dependent Role="RS_Package">
+              <PropertyRef Name="Package_ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Package_RS_ServiceType">
+          <End Type="RSEnModel.RS_ServiceType" Role="RS_ServiceType" Multiplicity="0..1" />
+          <End Type="RSEnModel.RS_Package" Role="RS_Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_ServiceType">
+              <PropertyRef Name="ServiceType_Id" />
+            </Principal>
+            <Dependent Role="RS_Package">
+              <PropertyRef Name="Package_ServiceTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Package_RS_WebService">
+          <End Type="RSEnModel.RS_WebService" Role="RS_WebService" Multiplicity="0..1" />
+          <End Type="RSEnModel.RS_Package" Role="RS_Package" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_WebService">
+              <PropertyRef Name="WebService_Id" />
+            </Principal>
+            <Dependent Role="RS_Package">
+              <PropertyRef Name="Package_WebServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Request_RS_Package">
+          <End Type="RSEnModel.RS_Package" Role="RS_Package" Multiplicity="1" />
+          <End Type="RSEnModel.RS_Request" Role="RS_Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Package">
+              <PropertyRef Name="Package_Id" />
+            </Principal>
+            <Dependent Role="RS_Request">
+              <PropertyRef Name="Request_PackageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_WebService_RS_Provider">
+          <End Type="RSEnModel.RS_Provider" Role="RS_Provider" Multiplicity="0..1" />
+          <End Type="RSEnModel.RS_WebService" Role="RS_WebService" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Provider">
+              <PropertyRef Name="Provider_Id" />
+            </Principal>
+            <Dependent Role="RS_WebService">
+              <PropertyRef Name="WebService_ProviderId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Request_RS_StatusType">
+          <End Type="RSEnModel.RS_StatusType" Role="RS_StatusType" Multiplicity="1" />
+          <End Type="RSEnModel.RS_Request" Role="RS_Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_StatusType">
+              <PropertyRef Name="StatusType_Id" />
+            </Principal>
+            <Dependent Role="RS_Request">
+              <PropertyRef Name="Request_StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_RoleAccess_RS_Roles">
+          <End Type="RSEnModel.RS_Roles" Role="RS_Roles" Multiplicity="1" />
+          <End Type="RSEnModel.RS_RoleAccess" Role="RS_RoleAccess" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Roles">
+              <PropertyRef Name="Role_ID" />
+            </Principal>
+            <Dependent Role="RS_RoleAccess">
+              <PropertyRef Name="RoleAccess_Role_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_SiteInfo_RS_Site">
+          <End Type="RSEnModel.RS_Site" Role="RS_Site" Multiplicity="1" />
+          <End Type="RSEnModel.RS_SiteInfo" Role="RS_SiteInfo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Site">
+              <PropertyRef Name="Site_Id" />
+            </Principal>
+            <Dependent Role="RS_SiteInfo">
+              <PropertyRef Name="SiteInfo_SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_SiteSetting_RS_Site">
+          <End Type="RSEnModel.RS_Site" Role="RS_Site" Multiplicity="1" />
+          <End Type="RSEnModel.RS_SiteSetting" Role="RS_SiteSetting" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Site">
+              <PropertyRef Name="Site_Id" />
+            </Principal>
+            <Dependent Role="RS_SiteSetting">
+              <PropertyRef Name="SiteSetting_SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Transaction_RS_Site">
+          <End Type="RSEnModel.RS_Site" Role="RS_Site" Multiplicity="1" />
+          <End Type="RSEnModel.RS_Transaction" Role="RS_Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_Site">
+              <PropertyRef Name="Site_Id" />
+            </Principal>
+            <Dependent Role="RS_Transaction">
+              <PropertyRef Name="Transaction_SiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RS_Transaction_RS_TransactionType">
+          <End Type="RSEnModel.RS_TransactionType" Role="RS_TransactionType" Multiplicity="1" />
+          <End Type="RSEnModel.RS_Transaction" Role="RS_Transaction" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RS_TransactionType">
+              <PropertyRef Name="TransactionType_Id" />
+            </Principal>
+            <Dependent Role="RS_Transaction">
+              <PropertyRef Name="Transaction_Type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RSEnModelStoreContainer" CdmEntityContainer="RSEntities">
+          <EntitySetMapping Name="RS_Account">
+            <EntityTypeMapping TypeName="RSEnModel.RS_Account">
+              <MappingFragment StoreEntitySet="RS_Account">
+                <ScalarProperty Name="Account_LanguageId" ColumnName="Account_LanguageId" />
+                <ScalarProperty Name="Account_Commision" ColumnName="Account_Commision" />
+                <ScalarProperty Name="Account_RoleId" ColumnName="Account_RoleId" />
+                <ScalarProperty Name="Account_Active" ColumnName="Account_Active" />
+                <ScalarProperty Name="Account_LastLogin" ColumnName="Account_LastLogin" />
+                <ScalarProperty Name="Account_Token" ColumnName="Account_Token" />
+                <ScalarProperty Name="Account_DisplayName" ColumnName="Account_DisplayName" />
+                <ScalarProperty Name="Account_Password" ColumnName="Account_Password" />
+                <ScalarProperty Name="Account_Username" ColumnName="Account_Username" />
+                <ScalarProperty Name="Account_ParentId" ColumnName="Account_ParentId" />
+                <ScalarProperty Name="Account_Id" ColumnName="Account_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_AccountAddress">
+            <EntityTypeMapping TypeName="RSEnModel.RS_AccountAddress">
+              <MappingFragment StoreEntitySet="RS_AccountAddress">
+                <ScalarProperty Name="AccountAddress_Default" ColumnName="AccountAddress_Default" />
+                <ScalarProperty Name="AccountAddress_ZipCode" ColumnName="AccountAddress_ZipCode" />
+                <ScalarProperty Name="AccountAddress_Address" ColumnName="AccountAddress_Address" />
+                <ScalarProperty Name="AccountAddress_RegionId" ColumnName="AccountAddress_RegionId" />
+                <ScalarProperty Name="AccountAddress_CityId" ColumnName="AccountAddress_CityId" />
+                <ScalarProperty Name="AccountAddress_StateId" ColumnName="AccountAddress_StateId" />
+                <ScalarProperty Name="AccountAddress_CountryId" ColumnName="AccountAddress_CountryId" />
+                <ScalarProperty Name="AccountAddress_AccountId" ColumnName="AccountAddress_AccountId" />
+                <ScalarProperty Name="AccountAddress_Title" ColumnName="AccountAddress_Title" />
+                <ScalarProperty Name="AccountAddress_Id" ColumnName="AccountAddress_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_AccountContact">
+            <EntityTypeMapping TypeName="RSEnModel.RS_AccountContact">
+              <MappingFragment StoreEntitySet="RS_AccountContact">
+                <ScalarProperty Name="AccountContact_Primary" ColumnName="AccountContact_Primary" />
+                <ScalarProperty Name="AccountContact_Active" ColumnName="AccountContact_Active" />
+                <ScalarProperty Name="AccountContact_Date" ColumnName="AccountContact_Date" />
+                <ScalarProperty Name="AccountContact_Type" ColumnName="AccountContact_Type" />
+                <ScalarProperty Name="AccountContact_Value" ColumnName="AccountContact_Value" />
+                <ScalarProperty Name="AccountContact_AccountId" ColumnName="AccountContact_AccountId" />
+                <ScalarProperty Name="AccountContact_Id" ColumnName="AccountContact_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_AccountInfo">
+            <EntityTypeMapping TypeName="RSEnModel.RS_AccountInfo">
+              <MappingFragment StoreEntitySet="RS_AccountInfo">
+                <ScalarProperty Name="AccountInfo_Mother" ColumnName="AccountInfo_Mother" />
+                <ScalarProperty Name="AccountInfo_Father" ColumnName="AccountInfo_Father" />
+                <ScalarProperty Name="AccountInfo_EditDate" ColumnName="AccountInfo_EditDate" />
+                <ScalarProperty Name="AccountInfo_RegisterDate" ColumnName="AccountInfo_RegisterDate" />
+                <ScalarProperty Name="AccountInfo_Picture" ColumnName="AccountInfo_Picture" />
+                <ScalarProperty Name="AccountInfo_Birthday" ColumnName="AccountInfo_Birthday" />
+                <ScalarProperty Name="AccountInfo_CompanyName" ColumnName="AccountInfo_CompanyName" />
+                <ScalarProperty Name="AccountInfo_NationalId" ColumnName="AccountInfo_NationalId" />
+                <ScalarProperty Name="AccountInfo_PassId" ColumnName="AccountInfo_PassId" />
+                <ScalarProperty Name="AccountInfo_Country_BirthPlace" ColumnName="AccountInfo_Country_BirthPlace" />
+                <ScalarProperty Name="AccountInfo_Country_Nationality" ColumnName="AccountInfo_Country_Nationality" />
+                <ScalarProperty Name="AccountInfo_Gender" ColumnName="AccountInfo_Gender" />
+                <ScalarProperty Name="AccountInfo_LastName" ColumnName="AccountInfo_LastName" />
+                <ScalarProperty Name="AccountInfo_FirstName" ColumnName="AccountInfo_FirstName" />
+                <ScalarProperty Name="AccountInfo_AccountId" ColumnName="AccountInfo_AccountId" />
+                <ScalarProperty Name="AccountInfo_Id" ColumnName="AccountInfo_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_Issued">
+            <EntityTypeMapping TypeName="RSEnModel.RS_Issued">
+              <MappingFragment StoreEntitySet="RS_Issued">
+                <ScalarProperty Name="Issued_Date" ColumnName="Issued_Date" />
+                <ScalarProperty Name="Issued_OriginalPolicyUrl" ColumnName="Issued_OriginalPolicyUrl" />
+                <ScalarProperty Name="Issued_StartDate" ColumnName="Issued_StartDate" />
+                <ScalarProperty Name="Issued_Price" ColumnName="Issued_Price" />
+                <ScalarProperty Name="Issued_No" ColumnName="Issued_No" />
+                <ScalarProperty Name="Issued_RequestId" ColumnName="Issued_RequestId" />
+                <ScalarProperty Name="Issued_Id" ColumnName="Issued_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_Language">
+            <EntityTypeMapping TypeName="RSEnModel.RS_Language">
+              <MappingFragment StoreEntitySet="RS_Language">
+                <ScalarProperty Name="Language_Direction" ColumnName="Language_Direction" />
+                <ScalarProperty Name="Language_Active" ColumnName="Language_Active" />
+                <ScalarProperty Name="Language_Iso" ColumnName="Language_Iso" />
+                <ScalarProperty Name="Language_Flag" ColumnName="Language_Flag" />
+                <ScalarProperty Name="Language_DisplayName" ColumnName="Language_DisplayName" />
+                <ScalarProperty Name="Language_Name" ColumnName="Language_Name" />
+                <ScalarProperty Name="Language_Id" ColumnName="Language_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_LanguageContent">
+            <EntityTypeMapping TypeName="RSEnModel.RS_LanguageContent">
+              <MappingFragment StoreEntitySet="RS_LanguageContent">
+                <ScalarProperty Name="LanguageContent_RU" ColumnName="LanguageContent_RU" />
+                <ScalarProperty Name="LanguageContent_TR" ColumnName="LanguageContent_TR" />
+                <ScalarProperty Name="LanguageContent_EN" ColumnName="LanguageContent_EN" />
+                <ScalarProperty Name="LanguageContent_TagName" ColumnName="LanguageContent_TagName" />
+                <ScalarProperty Name="LanguageContent_Group" ColumnName="LanguageContent_Group" />
+                <ScalarProperty Name="LanguageContent_Id" ColumnName="LanguageContent_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_Loc_City">
+            <EntityTypeMapping TypeName="RSEnModel.RS_Loc_City">
+              <MappingFragment StoreEntitySet="RS_Loc_City">
+                <ScalarProperty Name="City_WsCode" ColumnName="City_WsCode" />
+                <ScalarProperty Name="City_MapLan" ColumnName="City_MapLan" />
+                <ScalarProperty Name="City_MapLat" ColumnName="City_MapLat" />
+                <ScalarProperty Name="City_Name" ColumnName="City_Name" />
+                <ScalarProperty Name="City_StateId" ColumnName="City_StateId" />
+                <ScalarProperty Name="City_Id" ColumnName="City_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_Loc_Country">
+            <EntityTypeMapping TypeName="RSEnModel.RS_Loc_Country">
+              <MappingFragment StoreEntitySet="RS_Loc_Country">
+                <ScalarProperty Name="Country_coefficient" ColumnName="Country_coefficient" />
+                <ScalarProperty Name="Country_Iso" ColumnName="Country_Iso" />
+                <ScalarProperty Name="Country_Name" ColumnName="Country_Name" />
+                <ScalarProperty Name="Country_Id" ColumnName="Country_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_Loc_Region">
+            <EntityTypeMapping TypeName="RSEnModel.RS_Loc_Region">
+              <MappingFragment StoreEntitySet="RS_Loc_Region">
+                <ScalarProperty Name="Region_WsCode" ColumnName="Region_WsCode" />
+                <ScalarProperty Name="Region_Name" ColumnName="Region_Name" />
+                <ScalarProperty Name="Region_CityId" ColumnName="Region_CityId" />
+                <ScalarProperty Name="Region_Id" ColumnName="Region_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_Loc_State">
+            <EntityTypeMapping TypeName="RSEnModel.RS_Loc_State">
+              <MappingFragment StoreEntitySet="RS_Loc_State">
+                <ScalarProperty Name="State_WsCode" ColumnName="State_WsCode" />
+                <ScalarProperty Name="State_Name" ColumnName="State_Name" />
+                <ScalarProperty Name="State_CountryId" ColumnName="State_CountryId" />
+                <ScalarProperty Name="State_Id" ColumnName="State_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_Menu">
+            <EntityTypeMapping TypeName="RSEnModel.RS_Menu">
+              <MappingFragment StoreEntitySet="RS_Menu">
+                <ScalarProperty Name="Menu_Order" ColumnName="Menu_Order" />
+                <ScalarProperty Name="Menu_Type" ColumnName="Menu_Type" />
+                <ScalarProperty Name="Menu_Active" ColumnName="Menu_Active" />
+                <ScalarProperty Name="Menu_Class" ColumnName="Menu_Class" />
+                <ScalarProperty Name="Menu_Icon" ColumnName="Menu_Icon" />
+                <ScalarProperty Name="Menu_Url" ColumnName="Menu_Url" />
+                <ScalarProperty Name="Menu_FormName" ColumnName="Menu_FormName" />
+                <ScalarProperty Name="Menu_ParentId" ColumnName="Menu_ParentId" />
+                <ScalarProperty Name="Menu_Id" ColumnName="Menu_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_Package">
+            <EntityTypeMapping TypeName="RSEnModel.RS_Package">
+              <MappingFragment StoreEntitySet="RS_Package">
+                <ScalarProperty Name="Package_Active" ColumnName="Package_Active" />
+                <ScalarProperty Name="Package_WebServiceId" ColumnName="Package_WebServiceId" />
+                <ScalarProperty Name="Package_Coefficient" ColumnName="Package_Coefficient" />
+                <ScalarProperty Name="Package_ServiceTypeId" ColumnName="Package_ServiceTypeId" />
+                <ScalarProperty Name="Package_Name" ColumnName="Package_Name" />
+                <ScalarProperty Name="Package_ProviderId" ColumnName="Package_ProviderId" />
+                <ScalarProperty Name="Package_Id" ColumnName="Package_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_Provider">
+            <EntityTypeMapping TypeName="RSEnModel.RS_Provider">
+              <MappingFragment StoreEntitySet="RS_Provider">
+                <ScalarProperty Name="Provider_Website" ColumnName="Provider_Website" />
+                <ScalarProperty Name="Provider_Active" ColumnName="Provider_Active" />
+                <ScalarProperty Name="Provider_Logo" ColumnName="Provider_Logo" />
+                <ScalarProperty Name="Provider_Name" ColumnName="Provider_Name" />
+                <ScalarProperty Name="Provider_Id" ColumnName="Provider_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_Request">
+            <EntityTypeMapping TypeName="RSEnModel.RS_Request">
+              <MappingFragment StoreEntitySet="RS_Request">
+                <ScalarProperty Name="Request_Tall" ColumnName="Request_Tall" />
+                <ScalarProperty Name="Request_Weight" ColumnName="Request_Weight" />
+                <ScalarProperty Name="Request_SubmitDate" ColumnName="Request_SubmitDate" />
+                <ScalarProperty Name="Request_TempNo" ColumnName="Request_TempNo" />
+                <ScalarProperty Name="Request_StatusId" ColumnName="Request_StatusId" />
+                <ScalarProperty Name="Request_AccountId" ColumnName="Request_AccountId" />
+                <ScalarProperty Name="Request_DurationDay" ColumnName="Request_DurationDay" />
+                <ScalarProperty Name="Request_StartDate" ColumnName="Request_StartDate" />
+                <ScalarProperty Name="Request_PackageId" ColumnName="Request_PackageId" />
+                <ScalarProperty Name="Request_SiteId" ColumnName="Request_SiteId" />
+                <ScalarProperty Name="Request_Id" ColumnName="Request_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_RoleAccess">
+            <EntityTypeMapping TypeName="RSEnModel.RS_RoleAccess">
+              <MappingFragment StoreEntitySet="RS_RoleAccess">
+                <ScalarProperty Name="RoleAccess_Role_id" ColumnName="RoleAccess_Role_id" />
+                <ScalarProperty Name="RoleAccess_MenuId" ColumnName="RoleAccess_MenuId" />
+                <ScalarProperty Name="RoleAccess_Id" ColumnName="RoleAccess_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_Roles">
+            <EntityTypeMapping TypeName="RSEnModel.RS_Roles">
+              <MappingFragment StoreEntitySet="RS_Roles">
+                <ScalarProperty Name="Role_Title" ColumnName="Role_Title" />
+                <ScalarProperty Name="Role_Name" ColumnName="Role_Name" />
+                <ScalarProperty Name="Role_ID" ColumnName="Role_ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_ServiceType">
+            <EntityTypeMapping TypeName="RSEnModel.RS_ServiceType">
+              <MappingFragment StoreEntitySet="RS_ServiceType">
+                <ScalarProperty Name="ServiceType_Active" ColumnName="ServiceType_Active" />
+                <ScalarProperty Name="ServiceType_Name" ColumnName="ServiceType_Name" />
+                <ScalarProperty Name="ServiceType_Id" ColumnName="ServiceType_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_Site">
+            <EntityTypeMapping TypeName="RSEnModel.RS_Site">
+              <MappingFragment StoreEntitySet="RS_Site">
+                <ScalarProperty Name="Site_LanguageId_Default" ColumnName="Site_LanguageId_Default" />
+                <ScalarProperty Name="Site_Hosts" ColumnName="Site_Hosts" />
+                <ScalarProperty Name="Site_Url" ColumnName="Site_Url" />
+                <ScalarProperty Name="Site_Name" ColumnName="Site_Name" />
+                <ScalarProperty Name="Site_Id" ColumnName="Site_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_SiteInfo">
+            <EntityTypeMapping TypeName="RSEnModel.RS_SiteInfo">
+              <MappingFragment StoreEntitySet="RS_SiteInfo">
+                <ScalarProperty Name="SiteInfo_SiteId" ColumnName="SiteInfo_SiteId" />
+                <ScalarProperty Name="SiteInfo_AccountId_Admin" ColumnName="SiteInfo_AccountId_Admin" />
+                <ScalarProperty Name="SiteInfo_LocalName" ColumnName="SiteInfo_LocalName" />
+                <ScalarProperty Name="SiteInfo_Logo" ColumnName="SiteInfo_Logo" />
+                <ScalarProperty Name="SiteInfo_Id" ColumnName="SiteInfo_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_SiteSetting">
+            <EntityTypeMapping TypeName="RSEnModel.RS_SiteSetting">
+              <MappingFragment StoreEntitySet="RS_SiteSetting">
+                <ScalarProperty Name="SiteSetting_Value" ColumnName="SiteSetting_Value" />
+                <ScalarProperty Name="SiteSetting_Field" ColumnName="SiteSetting_Field" />
+                <ScalarProperty Name="SiteSetting_SiteId" ColumnName="SiteSetting_SiteId" />
+                <ScalarProperty Name="SiteSetting_Id" ColumnName="SiteSetting_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_StatusType">
+            <EntityTypeMapping TypeName="RSEnModel.RS_StatusType">
+              <MappingFragment StoreEntitySet="RS_StatusType">
+                <ScalarProperty Name="StatusType_Class" ColumnName="StatusType_Class" />
+                <ScalarProperty Name="StatusType_Color" ColumnName="StatusType_Color" />
+                <ScalarProperty Name="StatusType_Flag" ColumnName="StatusType_Flag" />
+                <ScalarProperty Name="StatusType_Name" ColumnName="StatusType_Name" />
+                <ScalarProperty Name="StatusType_Id" ColumnName="StatusType_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_Transaction">
+            <EntityTypeMapping TypeName="RSEnModel.RS_Transaction">
+              <MappingFragment StoreEntitySet="RS_Transaction">
+                <ScalarProperty Name="Transaction_Creditor" ColumnName="Transaction_Creditor" />
+                <ScalarProperty Name="Transaction_Debtor" ColumnName="Transaction_Debtor" />
+                <ScalarProperty Name="Transaction_Type" ColumnName="Transaction_Type" />
+                <ScalarProperty Name="Transaction_Description" ColumnName="Transaction_Description" />
+                <ScalarProperty Name="Transaction_Date" ColumnName="Transaction_Date" />
+                <ScalarProperty Name="Transaction_AccountId" ColumnName="Transaction_AccountId" />
+                <ScalarProperty Name="Transaction_DocumentNo" ColumnName="Transaction_DocumentNo" />
+                <ScalarProperty Name="Transaction_SiteId" ColumnName="Transaction_SiteId" />
+                <ScalarProperty Name="Transaction_Id" ColumnName="Transaction_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_TransactionType">
+            <EntityTypeMapping TypeName="RSEnModel.RS_TransactionType">
+              <MappingFragment StoreEntitySet="RS_TransactionType">
+                <ScalarProperty Name="TransactionType_GroupId" ColumnName="TransactionType_GroupId" />
+                <ScalarProperty Name="TransactionType_SortOrder" ColumnName="TransactionType_SortOrder" />
+                <ScalarProperty Name="TransactionType_Icon" ColumnName="TransactionType_Icon" />
+                <ScalarProperty Name="TransactionType_Class" ColumnName="TransactionType_Class" />
+                <ScalarProperty Name="TransactionType_Name" ColumnName="TransactionType_Name" />
+                <ScalarProperty Name="TransactionType_Id" ColumnName="TransactionType_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RS_WebService">
+            <EntityTypeMapping TypeName="RSEnModel.RS_WebService">
+              <MappingFragment StoreEntitySet="RS_WebService">
+                <ScalarProperty Name="WebService_ApiToken" ColumnName="WebService_ApiToken" />
+                <ScalarProperty Name="WebService_Password" ColumnName="WebService_Password" />
+                <ScalarProperty Name="WebService_Username" ColumnName="WebService_Username" />
+                <ScalarProperty Name="WebService_Url" ColumnName="WebService_Url" />
+                <ScalarProperty Name="WebService_ProviderId" ColumnName="WebService_ProviderId" />
+                <ScalarProperty Name="WebService_Id" ColumnName="WebService_Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="RSEnModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

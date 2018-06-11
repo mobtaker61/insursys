@@ -1,0 +1,195 @@
+﻿
+@{
+    ViewBag.Title = "view"; Layout = null;
+
+    Insursys.Models.Repository.rpt_Costumer RCostumer = new Insursys.Models.Repository.rpt_Costumer();
+}
+
+
+<header id="topbar" class="affix">
+    <div class="topbar-left">
+        <ol class="breadcrumb">
+            <li class="crumb-icon">
+                <a href="dashboard.html">
+                    <span class="glyphicon glyphicon-home"></span>
+                </a>
+            </li>
+            <li class="crumb-link">
+                <a href="index.html">[LANG]</a>
+            </li>
+            <li class="crumb-trail">[LANG]</li>
+        </ol>
+    </div>
+
+    <!-- کلید: راست -->
+    <div class="topbar-right">
+        <button data-effect="mfp-flipInY" class="btn btn-default btn-sm light fw600 ml10 btn btn-success open_formY" onclick="fn_get_details();"><span class="glyphicons glyphicons-user_add pr5"></span><span class="lang_new">Add New</span></button>
+    </div>
+
+</header>
+
+<!-- نمایش فرم -->
+<div id="form_view">
+    <link rel='stylesheet' type='text/css' href='/Content/_panel/vendor/plugins/magnific/magnific-popup.css'>
+    <link rel='stylesheet' type='text/css' href='/Content/_panel/assets/skin/base/plugins/adminmodals.less'>
+    @*<link rel='stylesheet' type='text/css' href='~/Content/_panel/assets/admin-tools/admin-forms/css/'>*@
+    <script type='text/javascript' src='/Content/_panel/vendor/plugins/magnific/jquery.magnific-popup.js'></script>
+    <script type='text/javascript'>
+        jQuery(document).ready(function () {
+            var modalContent = $('#modal-content');
+            function findActive() { var activeModal = "#modal-form"; return activeModal; }; findActive();
+            $('html .open_formY').on('click', function () {
+                $('html').find('.open_formY').removeClass('active-animation');
+                $(this).addClass('active-animation item-checked');
+                $.magnificPopup.open({
+                    removalDelay: 500,
+                    items: {
+                        src: findActive()
+                    },
+                    // overflowY: 'hidden', //
+                    callbacks: {
+                        beforeOpen: function (e) {
+                            var Animation = $("html").find('.active-animation').attr('data-effect');
+                            this.st.mainClass = Animation;
+                        }
+                    },
+                    midClick: true
+                });
+
+            });
+        });
+    </script>
+
+    <!-- فرم -->
+    <div id="modal-form" class=" popup-basic admin-form mfp-with-anim mfp-hide">
+            <!-- ADD Form -->
+            <div id="content_form">
+                <div id='loader' class='loader2'>
+                    <div class='circle'></div>
+                    <div class='circle'></div>
+                    <div class='circle'></div>
+                    <div class='circle'></div>
+                    <div class='circle'></div>
+                </div>
+
+            </div>
+    </div>
+</div>
+
+
+<div class="panel">
+    <div class="panel-body pn mt50">
+        <table class="table admin-form theme-warning tc-checkbox-1 fs13">
+            <thead>
+                <tr class="bg-light">
+                    <th class="lang_ProfileImage">Image</th>
+                    <th class="lang_ProfileDisplayName">Display Name</th>
+                    <th class="lang_RoleType">type</th>
+                    <th class="lang_Commission">Commission</th>
+                    <th class="lang_Status">Status</th>
+                    <th class="text-left"></th>
+                </tr>
+            </thead>
+            <tbody id="value_list">
+                @{
+                    foreach (var Costumer in RCostumer.GetCostumerList(Convert.ToInt32(HttpUtility.HtmlDecode(Request.Cookies["AccountInfo"]["AccountId"]))))
+                    {
+                        <tr>
+                            <td class="w100">
+                                <img class="img-responsive img-circle mw40 ib mr10" title="user" src="~/Content/_panel/assets/img/profile/@RCostumer.GetCostumerInfo(@Costumer.Account_Id).AccountInfo_Picture">
+                            </td>
+                            <td class="">@Costumer.Account_DisplayName</td>
+                            <td class="">@Costumer.RS_Roles.Role_Title</td>
+                            <td class="">@Costumer.Account_Commision</td>
+                            @if (Costumer.Account_Active)
+                            {
+                                <td class="lang_Active">Active</td>
+                            }
+                            else
+                            {
+                                <td class="lang_Deactive">Deactive</td>
+                            }
+                            <td class="text-left">
+                                <div class="btn-group text-right btn-block">
+                                    <button type="button" class="btn btn-success br2 btn-xs fs12 dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        Active
+                                        <span class="caret ml5"></span>
+                                    </button>
+                                    <ul class="dropdown-menu " role="menu">
+                                        <li>
+                                            <a href="#">Edit</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Delete</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Archive</a>
+                                        </li>
+                                        <li class="divider"></li>
+                                        <li>
+                                            <a href="#">Complete</a>
+                                        </li>
+                                        <li class="active">
+                                            <a href="#">Pending</a>
+                                        </li>
+                                        <li>
+                                            <a href="#">Canceled</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+<script>
+
+
+
+
+        function fnGetData(_filter) {
+            $.ajax({
+                url: '/_AdminCommand/getDataOrders',
+                type: 'POST',
+                data: {
+                    FTR: _filter,
+                }
+                , success: function (data, status) {
+                    message_data = data;
+                    if (status == "success") {
+                        $("#listView").after().html(message_data);
+
+                    }
+                    else { alert("خطا در دریافت اطلاعات.\n" + message_data); }
+                }
+            });
+        }
+
+
+        function fn_get_details() {
+
+            content_form.innerHTML = "<div id='loader' class='loader2'><div class='circle'></div><div class='circle'></div><div class='circle'></div><div class='circle'></div><div class='circle'></div></div>";
+
+            $.ajax({
+                url: '/panel/RS_Form_Customer',
+                type: 'POST',
+                data: {}
+                , success: function (data, status) {
+                    if (status == "success") {
+                        $("#content_form").html(data);
+                    }
+                    else { alert("No Date."); }
+                }
+            });
+        }
+
+
+
+
+</script>
+

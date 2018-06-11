@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<DATA>
+  <CD>
+    <ID>4</ID>
+    <TAGNAME>MainMenu</TAGNAME>
+    <VALUE>Ana Menu *</VALUE>
+  </CD>
+  <CD>
+    <ID>3</ID>
+    <TAGNAME>Welcome</TAGNAME>
+    <VALUE>Welcome</VALUE>
+  </CD>
+  <CD>
+    <ID>2</ID>
+    <TAGNAME>Login</TAGNAME>
+    <VALUE>Login</VALUE>
+  </CD>
+  <CD>
+    <ID>1</ID>
+    <TAGNAME>Home</TAGNAME>
+    <VALUE>Home11</VALUE>
+  </CD>
+</DATA>

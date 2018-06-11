@@ -1,0 +1,243 @@
+﻿
+@{
+    ViewBag.Title = "view";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <title class="lang_PageTitle_Panael">Panel Manager</title>
+    <meta name="keywords" content="J-A-S-P" />
+    <meta name="description" content="J-A-S-P">
+    <meta name="author" content="J-A-S-P V.1.00">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @Styles.Render("~/Content/_login/css")
+    @Scripts.Render("~/Content/_panel/jquery_head")
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/Content/_admin/assets/img/favicon.ico">
+    <style>
+        .alarm {
+            padding: 10px;
+            background-color: #DD4B39;
+            font-family: tahoma;
+            color: #FFF;
+            direction: rtl;
+            opacity: 0.65;
+            position: fixed;
+            top: 0;
+            z-index: 10;
+            right: 0;
+            left: 0;
+            border-bottom: 1px outset #DD4B39;
+            font-size: 11px;
+        }
+    </style>
+
+</head>
+<body class="external-page sb-l-c sb-r-c">
+    <form id="form1" runat="server" style="height: 100%;">
+
+
+
+        <!-- Start: Main -->
+        <div id="main" class="animated fadeIn" style="height: 100%;">
+
+            <!-- Start: Content-Wrapper -->
+            <section id="content_wrapper">
+
+                <!-- begin canvas animation bg -->
+                <div id="canvas-wrapper">
+                    <canvas id="demo-canvas"></canvas>
+                </div>
+
+                <!-- Begin: Content -->
+                <section id="content">
+
+                    <div class="admin-form theme-info" id="login1">
+
+                        <div class="row mb15 table-layout">
+
+                            <div class="col-xs-6 va-m pln"><img src="/Content/_web/img/logos/irancell.png" title="AdminDesigns Logo" class="img-responsive w25d" /></div>
+
+                            <div class="col-xs-6 text-right va-b pr5">
+                                <div class="login-links">
+                                    <a href="/_Admin/login" class="active lang_SignIn" title="Sign In">Sign In</a>
+                                    @*<span class="text-white"> | </span><a href="../" class="" title="Register">Website</a>*@
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="panel panel-info mt10 br-n">
+
+                            <div class="panel-heading heading-border bg-white">
+                                <span class="panel-title hidden">
+                                    <i class="fa fa-sign-in"></i><span class="lang_register">Register</span>
+                                </span>
+                            </div>
+
+
+                            <div class="panel-body bg-light p30">
+                                <div class="row">
+                                    <div class="col-sm-7 pr30">
+
+
+
+                                        <div class="section">
+                                            <label for="username" class="field-label text-muted fs18 mb10 lang_UserName">Username</label>
+                                            <label for="username" class="field prepend-icon">
+                                                <input type="text" name="username" id="txtUser" class="gui-input" placeholder="Enter username" />
+                                                <label for="username" class="field-icon">
+                                                    <i class="fa fa-user"></i>
+                                                </label>
+                                            </label>
+                                        </div>
+                                        <!-- end section -->
+
+                                        <div class="section">
+                                            <label for="username" class="field-label text-muted fs18 mb10 lang_Password">Password</label>
+                                            <label for="password" class="field prepend-icon">
+                                                <input type="password" name="password" id="txtPass" class="gui-input" placeholder="Enter password" />
+                                                <label for="password" class="field-icon">
+                                                    <i class="fa fa-lock"></i>
+                                                </label>
+                                            </label>
+                                        </div>
+                                        <!-- end section -->
+
+
+
+
+                                        <div class="section">
+                                            <label for="select_Lang" class="field-label text-muted fs18 mb10 lang_Password lang_Language">Language</label>
+                                            <label for="select_Lang" class="field prepend-icon">
+                                                <select name="select_Lang" id="select_Lang" class="select2-primary form-control">
+                                                    @{    Insursys.Models.Repository.rpt_Language Rlang = new Insursys.Models.Repository.rpt_Language();
+                                                        foreach (var item in Rlang.GetLangList())
+
+                                                        {
+                                                            <option value="@item.Language_Iso">@item.Language_DisplayName</option>
+
+                                                        }
+                                                    }
+                                                </select>
+                                            </label>
+                                        </div>
+
+
+
+
+
+
+
+
+
+                                        </div>
+                                    <div class="col-sm-5 br-l br-grey pl30">
+                                        <h3 class="mb25 lang_LoginFormText_1"></h3>
+                                        <p class="mb15">
+                                            <span class="fa fa-check text-success pr5 lang_LoginFormText_2"></span>
+                                        </p>
+                                        <p class="mb15">
+                                            <span class="fa fa-check text-success pr5 lang_LoginFormText_3"></span>
+                                        </p>
+                                        <p class="mb15">
+                                            <span class="fa fa-check text-success pr5 lang_LoginFormText_4"></span>
+                                        </p>
+                                        <p class="mb15">
+                                            <span class="fa fa-check text-success pr5 lang_LoginFormText_5"></span>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-footer clearfix p10 ph15">
+
+
+                                <input type="button" value="Sing in" class="button btn-primary mr10 pull-right  lang_Btn_SignIn" onclick="fn_login();" />
+
+                                <script>
+
+                                    function fn_login() {
+
+                                        if (txtPass.value != "", txtUser.value != "")
+                                            $.ajax({
+                                                url: '/login/com_login',
+                                                type: 'POST',
+                                                data: {
+                                                    val44: txtPass.value,//0
+                                                    val67: txtUser.value,//0
+                                                    val89: select_Lang.value,//0
+                                                }
+                                                , success: function (data, status) {
+                                                    if (status == "success") {
+                                                        if (data.split("welcome").length == 2) location.href = "/"; else alert("Invalid Username And Password.");
+                                                    }
+                                                    else { alert("Error get data."); }
+                                                }
+                                            });
+                                        else { alert("Please Fill Username And Password."); $(".gui-input").attr("style", "border: 1px solid #ffca05;"); }
+
+
+                                    }
+
+                                </script>
+
+                                <label class="switch block switch-primary pull-left input-align mt10">
+                                    <input type="checkbox" name="remember" id="remember" checked>
+                                    <label for="remember" data-on="YES" data-off="NO"></label>
+                                    <span class="lang_RememberMe">Remember me</span>
+                                </label>
+                            </div>
+
+                        </div>
+                    </div>
+
+                </section>
+                <!-- End: Content -->
+
+            </section>
+            <!-- End: Content-Wrapper -->
+
+        </div>
+        <!-- End: Main -->
+
+        <div id="alarm" runat="server" class="alarm" style="display:none"></div>
+
+        <!-- BEGIN: PAGE SCRIPTS -->
+        <!-- jQuery -->
+        <!-- Select2 Plugin Plugin -->
+        <script src="/Content/_panel/vendor/plugins/select2/select2.min.js"></script>
+
+        <!-- Page Javascript -->
+        <script type="text/javascript">
+                                    jQuery(document).ready(function () {
+
+                                        "use strict";
+
+                                        // Init Theme Core
+                                        Core.init();
+
+                                        // Init Demo JS
+                                        Demo.init();
+
+                                        // Init CanvasBG and pass target starting location
+                                        CanvasBG.init({
+                                            Loc: {
+                                                x: window.innerWidth / 2,
+                                                y: window.innerHeight / 3.3
+                                            },
+                                        });
+
+
+                                    });
+                                    $(".select2-primary").select2();
+        </script>
+        <!-- END: PAGE SCRIPTS -->
+
+    </form>
+</body>
+</html>

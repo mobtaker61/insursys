@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ec1ec7fd26dd421fa941d9be669d1ab7" Name="Diagram1" ZoomLevel="63">
+        <EntityTypeShape EntityType="RSEnModel.RS_Account" Width="1.5" PointX="6" PointY="13" />
+        <EntityTypeShape EntityType="RSEnModel.RS_AccountAddress" Width="1.5" PointX="11.25" PointY="17.75" />
+        <EntityTypeShape EntityType="RSEnModel.RS_AccountContact" Width="1.5" PointX="8.25" PointY="35.5" />
+        <EntityTypeShape EntityType="RSEnModel.RS_AccountInfo" Width="1.5" PointX="8.25" PointY="8.125" />
+        <EntityTypeShape EntityType="RSEnModel.RS_Issued" Width="1.5" PointX="13.5" PointY="10.25" />
+        <EntityTypeShape EntityType="RSEnModel.RS_Language" Width="1.5" PointX="3.75" PointY="10.125" />
+        <EntityTypeShape EntityType="RSEnModel.RS_LanguageContent" Width="1.5" PointX="6" PointY="1.25" />
+        <EntityTypeShape EntityType="RSEnModel.RS_Loc_City" Width="1.5" PointX="6.75" PointY="30.25" />
+        <EntityTypeShape EntityType="RSEnModel.RS_Loc_Country" Width="1.5" PointX="6" PointY="9.25" />
+        <EntityTypeShape EntityType="RSEnModel.RS_Loc_Region" Width="1.5" PointX="9" PointY="30.375" />
+        <EntityTypeShape EntityType="RSEnModel.RS_Loc_State" Width="1.5" PointX="4.5" PointY="30.375" />
+        <EntityTypeShape EntityType="RSEnModel.RS_Menu" Width="1.5" PointX="0.75" PointY="9.75" />
+        <EntityTypeShape EntityType="RSEnModel.RS_Package" Width="1.5" PointX="9" PointY="21.375" />
+        <EntityTypeShape EntityType="RSEnModel.RS_Provider" Width="1.5" PointX="6.75" PointY="24.625" />
+        <EntityTypeShape EntityType="RSEnModel.RS_Request" Width="1.5" PointX="11.25" PointY="9.5" />
+        <EntityTypeShape EntityType="RSEnModel.RS_RoleAccess" Width="1.5" PointX="3" PointY="14.5" />
+        <EntityTypeShape EntityType="RSEnModel.RS_Roles" Width="1.5" PointX="0.75" PointY="14.5" />
+        <EntityTypeShape EntityType="RSEnModel.RS_ServiceType" Width="1.5" PointX="6.75" PointY="22.125" />
+        <EntityTypeShape EntityType="RSEnModel.RS_Site" Width="1.5" PointX="9" PointY="26.25" />
+        <EntityTypeShape EntityType="RSEnModel.RS_SiteInfo" Width="1.5" PointX="11.25" PointY="14.25" />
+        <EntityTypeShape EntityType="RSEnModel.RS_SiteSetting" Width="1.5" PointX="11.25" PointY="26.5" />
+        <EntityTypeShape EntityType="RSEnModel.RS_StatusType" Width="1.5" PointX="9" PointY="4.875" />
+        <EntityTypeShape EntityType="RSEnModel.RS_Transaction" Width="1.5" PointX="8.25" PointY="13.75" />
+        <EntityTypeShape EntityType="RSEnModel.RS_TransactionType" Width="1.5" PointX="6" PointY="5.25" />
+        <EntityTypeShape EntityType="RSEnModel.RS_WebService" Width="1.5" PointX="6.75" PointY="18.875" />
+        <EntityTypeShape EntityType="RSEnModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="RSEnModel.FK_RS_Account_RS_Account" />
+        <AssociationConnector Association="RSEnModel.FK_RS_Account_RS_Language" />
+        <AssociationConnector Association="RSEnModel.FK_RS_Account_RS_Roles" />
+        <AssociationConnector Association="RSEnModel.FK_RS_AccountAddress_RS_Account" />
+        <AssociationConnector Association="RSEnModel.FK_RS_AccountContact_RS_Account" />
+        <AssociationConnector Association="RSEnModel.FK_RS_AccountInfo_RS_Account" />
+        <AssociationConnector Association="RSEnModel.FK_RS_Request_RS_Account" />
+        <AssociationConnector Association="RSEnModel.FK_RS_SiteInfo_RS_Account" />
+        <AssociationConnector Association="RSEnModel.FK_RS_Transaction_RS_Account" />
+        <AssociationConnector Association="RSEnModel.FK_RS_AccountAddress_RS_Loc_Region" />
+        <AssociationConnector Association="RSEnModel.FK_RS_AccountInfo_RS_Loc_Country" />
+        <AssociationConnector Association="RSEnModel.FK_RS_AccountInfo_RS_Loc_Country1" />
+        <AssociationConnector Association="RSEnModel.FK_RS_Issued_RS_Request" />
+        <AssociationConnector Association="RSEnModel.FK_RS_LanguageContent_RS_Language" />
+        <AssociationConnector Association="RSEnModel.FK_RS_Loc_City_RS_Loc_State" />
+        <AssociationConnector Association="RSEnModel.FK_RS_Loc_Region_RS_Loc_City" />
+        <AssociationConnector Association="RSEnModel.FK_RS_Loc_State_RS_Loc_Country" />
+        <AssociationConnector Association="RSEnModel.FK_RS_Menu_RS_Menu" />
+        <AssociationConnector Association="RSEnModel.FK_RS_RoleAccess_RS_Menu" />
+        <AssociationConnector Association="RSEnModel.FK_RS_Package_RS_Provider" />
+        <AssociationConnector Association="RSEnModel.FK_RS_Package_RS_ServiceType" />
+        <AssociationConnector Association="RSEnModel.FK_RS_Package_RS_WebService" />
+        <AssociationConnector Association="RSEnModel.FK_RS_Request_RS_Package" />
+        <AssociationConnector Association="RSEnModel.FK_RS_WebService_RS_Provider" />
+        <AssociationConnector Association="RSEnModel.FK_RS_Request_RS_StatusType" />
+        <AssociationConnector Association="RSEnModel.FK_RS_RoleAccess_RS_Roles" />
+        <AssociationConnector Association="RSEnModel.FK_RS_SiteInfo_RS_Site" />
+        <AssociationConnector Association="RSEnModel.FK_RS_SiteSetting_RS_Site" />
+        <AssociationConnector Association="RSEnModel.FK_RS_Transaction_RS_Site" />
+        <AssociationConnector Association="RSEnModel.FK_RS_Transaction_RS_TransactionType" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

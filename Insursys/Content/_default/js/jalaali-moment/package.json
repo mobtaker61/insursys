@@ -1,0 +1,49 @@
+{
+  "name": "moment-jalaali",
+  "version": "0.1.1",
+  "description": "A Jalaali (Jalali, Persian, Khorshidi, Shamsi) calendar system plugin for moment.js.",
+  "author": {
+    "name": "Behrang Noruzi Niya",
+    "email": "behrangn@gmail.com"
+  },
+  "license": "MIT",
+  "keywords": [
+    "jalaali",
+    "jalali",
+    "persian",
+    "khorshidi",
+    "shamsi",
+    "date",
+    "calendar",
+    "conversion",
+    "convert"
+  ],
+  "main": "moment-jalaali.js",
+  "scripts": {
+    "test": "grunt test",
+    "prepublish": "grunt build"
+  },
+  "homepage": "https://github.com/behrang/moment-jalaali",
+  "bugs": {
+    "url": "https://github.com/behrang/moment-jalaali/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/behrang/moment-jalaali.git"
+  },
+  "devDependencies": {
+    "mocha": "~1.12.0",
+    "coffee-script": "~1.6.3",
+    "chai": "~1.7.2",
+    "grunt": "~0.4.1",
+    "grunt-cli": "~0.1.9",
+    "grunt-contrib-watch": "~0.5.2",
+    "grunt-contrib-coffee": "~0.7.0",
+    "grunt-contrib-uglify": "~0.2.2",
+    "grunt-coffeelint": "0.0.7",
+    "grunt-shell": "~0.3.1"
+  },
+  "dependencies": {
+    "moment": "~2.1.0"
+  }
+}
