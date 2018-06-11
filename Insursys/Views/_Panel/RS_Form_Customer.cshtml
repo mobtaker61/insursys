@@ -21,10 +21,10 @@
 
 
     <!-- Required Plugin CSS -->
-    <link rel="stylesheet" type="text/css" href="vendor/plugins/tagmanager/tagmanager.css">
-    <link rel="stylesheet" type="text/css" href="vendor/plugins/daterange/daterangepicker.css">
-    <link rel="stylesheet" type="text/css" href="vendor/plugins/datepicker/css/bootstrap-datetimepicker.css">
-    <link rel="stylesheet" type="text/css" href="vendor/plugins/colorpicker/css/bootstrap-colorpicker.min.css">
+    <link rel="stylesheet" type="text/css" href="/Content/_panel/vendor/plugins/tagmanager/tagmanager.css">
+    <link rel="stylesheet" type="text/css" href="/Content/_panel/vendor/plugins/daterange/daterangepicker.css">
+    <link rel="stylesheet" type="text/css" href="/Content/_panel/vendor/plugins/colorpicker/css/bootstrap-colorpicker.min.css">
+
 
     <!-- DATE طراحی داخلی -->
     <link rel="stylesheet" type="text/css" href="/Content/_panel/vendor/plugins/datepicker/css/bootstrap-datetimepicker.css">
@@ -57,9 +57,7 @@
                     <div class="panel heading-border panel-system">
                         <div class="panel-body bg-light">
 
-                                <div class="section-divider mb40" id="spy1">
-                                    <span>Form UI Elements</span>
-                                </div>
+                                <div class="section-divider mb40" id="spy1"><span>Form UI Elements</span></div>
                                 <!-- .section-divider -->
                                 <!-- Basic Inputs -->
 
@@ -184,18 +182,22 @@
                                 <!-- ID -->
                                 <div class="row">
                                     <div class="col-md-4">
+
+
+
+
                                         <div class="section">
-                                            <div class="input-group date">
+                                            
+                                            <div class="input-group date" id="datetimepicker2">
                                                 <span class="input-group-addon cursor">
                                                     <i class="fa fa-calendar"></i>
                                                 </span>
-                                                <input id="datepicker1" type="text" class="form-control" placeholder="BirthDay">
+                                                <input type="text" class="form-control" maxlength="10">
                                             </div>
 
-                              
-
-
                                         </div>
+
+
                                     </div>
                                     <!-- .section-divider -->
                                     <!-- Name and Famliy -->
@@ -228,107 +230,144 @@
 
                 </div>
 
+                <script>
+                    $('#datetimepicker2').datetimepicker();
+                    $('#datetimepicker3').datetimepicker({
+                        inline: false,
+                        daysOfWeekDisabled: [6],
+                        disabledDates: ["15/03/1395"]
+                    });
+
+
+
+                </script>
+
+
+
                 <!--+-----------------+
                     |     TAB[2]      |
                     +-----------------+----->
                 <div id="tab1_2" class="tab-pane">
 
-                    <div class="section-divider mb40 mt20"><span> پیگیری سفارش </span></div>
 
-                    <div class="section row">
-                        <!--عنوان گزارش-->
-                        <div class="col-xs-6" dir="ltr">
-                            <select id="title_report" class="contextual-single form-control select-system w200" style="width:100%;">
-                                @MvcHtmlString.Create(ViewBag.titleReport_option)
-                            </select>
-                            <script>$("#title_report").select2();</script>
-                        </div>
+                    <div class="panel heading-border panel-system">
+                        <div class="panel-body bg-light">
+                            <div class="section-divider mb40" id="spy1"><span>Form UI Elements</span></div>
 
-                        <!--تاریخ-->
-                        <div class="col-xs-6" dir="ltr">
-                            <div class="input-group date" id="datetimepicker3">
-                                <span class="input-group-addon cursor">
-                                    <i class="fa fa-calendar"></i>
-                                </span>
-                                <input type="text" id="date_follow_SH" class="form-control">
+
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="section">
+                                        <label class="field select">
+                                            <select id="selectID" name="selectID">
+                                                <option value="" class="lang_Nationality">Nationality</option>
+                                                @{ foreach (var nation in RGeo.GetCoutryList())
+                                                    {
+                                                        <option value="@nation.Country_Id">@nation.Country_Name</option>
+                                                    }
+                                                }
+                                            </select>
+                                            <i class="arrow"></i>
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="section">
+                                        <label class="field prepend-icon">
+                                            <input type="text" name="PassId" id="PassId" class="gui-input" placeholder="Passport ID">
+                                            <label for="PassId" class="field-icon">
+                                                <i class="fa fa-crosshairs"></i>
+                                            </label>
+                                        </label>
+                                    </div>
+                                </div>
+
                             </div>
-                            <script>
-
-                                $("#datepicker1").datepicker({
-                                    prevText: '<i class="fa fa-chevron-left"></i>',
-                                    nextText: '<i class="fa fa-chevron-right"></i>',
-                                    showButtonPanel: false,
-                                    beforeShow: function (input, inst) {
-                                        var newclass = 'admin-form';
-                                        var themeClass = $(this).parents('.admin-form').attr('class');
-                                        var smartpikr = inst.dpDiv.parent();
-                                        if (!smartpikr.hasClass(themeClass)) {
-                                            inst.dpDiv.wrap('<div class="' + themeClass + '"></div>');
-                                        }
-                                    }
-                                });
-
-
-                                $('#datetimepicker3').datetimepicker({
-                                    inline: false,
-                                    daysOfWeekDisabled: [6],
-                                    disabledDates: ["15/03/1395"]
-
-                                });
-
-
-
-                            </script>
-                        </div>
-                    </div>
-
-                    <div class="section row">
-                        <!--متن کوتاه-->
-                        <div class="col-md-12 mt20 mb20">
-                            <label for="_des_text" class="field prepend-icon">
-                                <textarea id="_des_text" class="gui-textarea br-light bg-light" name="_des_text" style="min-height: 123px;" placeholder="توضیحات ندارد"></textarea>
-                                <b class="tooltip tip-left-bottom"><em> توضیحات سفارش </em></b>
-                                <label for="_des_text" class="field-icon"><i class="fa fa-comments"></i></label>
-                            </label>
 
                         </div>
                     </div>
 
 
-                    <div class="section-divider mb40 mt20"><span> لیست گزارشات </span></div>
-                    <!-- لیست گزارشات -->
-                    <table class="table admin-form theme-warning tc-checkbox-1 fs13">
-                        <!-- عناوین جدول -->
-                        <thead>
-                            <tr class="bg-light">
-                                <th class="">ثبت کننده</th>
-                                <th class="">عنوان</th>
-                                <th class="">متن</th>
-                                <th class="">تاریخ ثبت</th>
-                            </tr>
-                        </thead>
 
-                        <!-- محتوای جدول -->
-                        <tbody id="value_list_report">@MvcHtmlString.Create(@ViewBag.history_li)</tbody>
-                    </table>
-                    <br />
 
-                    <!--+-----------------+
-                        |     FOOTER      |
-                        +-----------------+----->
-                    <div class="panel-footer text-right ">
 
-                        <button id="J_btn_add" class="button btn-system" onclick="cmd_add_value()" type="button">ثبت گزارش</button>
-                        <button id="J_btn_close" type="button" class="button left-column" style="float:left">برگشت</button>
 
-                        <span id="J_return_alert"></span>
 
-                        <!--+-----------------+
-                            |       ADD       |
-                            +-----------------+
-                            |      UPDATE     |
-                            +-----------------+-------->
-                        <script>
+
+
+
+
+                            <div class="section-divider mb40 mt20"><span> پیگیری سفارش </span></div>
+
+                            <div class="section row">
+                                <!--عنوان گزارش-->
+                                <div class="col-xs-6" dir="ltr">
+                                    <select id="title_report" class="contextual-single form-control select-system w200" style="width:100%;">
+                                        @MvcHtmlString.Create(ViewBag.titleReport_option)
+                                    </select>
+                                    <script>$("#title_report").select2();</script>
+                                </div>
+
+                                <!--تاریخ-->
+                                <div class="col-xs-6" dir="ltr">
+                                    <div class="input-group date" id="datetimepicker3">
+                                        <span class="input-group-addon cursor">
+                                            <i class="fa fa-calendar"></i>
+                                        </span>
+                                        <input type="text" id="date_follow_SH" class="form-control">
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="section row">
+                                <!--متن کوتاه-->
+                                <div class="col-md-12 mt20 mb20">
+                                    <label for="_des_text" class="field prepend-icon">
+                                        <textarea id="_des_text" class="gui-textarea br-light bg-light" name="_des_text" style="min-height: 123px;" placeholder="توضیحات ندارد"></textarea>
+                                        <b class="tooltip tip-left-bottom"><em> توضیحات سفارش </em></b>
+                                        <label for="_des_text" class="field-icon"><i class="fa fa-comments"></i></label>
+                                    </label>
+
+                                </div>
+                            </div>
+
+
+                            <div class="section-divider mb40 mt20"><span> لیست گزارشات </span></div>
+                            <!-- لیست گزارشات -->
+                            <table class="table admin-form theme-warning tc-checkbox-1 fs13">
+                                <!-- عناوین جدول -->
+                                <thead>
+                                    <tr class="bg-light">
+                                        <th class="">ثبت کننده</th>
+                                        <th class="">عنوان</th>
+                                        <th class="">متن</th>
+                                        <th class="">تاریخ ثبت</th>
+                                    </tr>
+                                </thead>
+
+                                <!-- محتوای جدول -->
+                                <tbody id="value_list_report">@MvcHtmlString.Create(@ViewBag.history_li)</tbody>
+                            </table>
+                            <br />
+
+                            <!--+-----------------+
+                    |     FOOTER      |
+                    +-----------------+----->
+                            <div class="panel-footer text-right ">
+
+                                <button id="J_btn_add" class="button btn-system" onclick="cmd_add_value()" type="button">ثبت گزارش</button>
+                                <button id="J_btn_close" type="button" class="button left-column" style="float:left">برگشت</button>
+
+                                <span id="J_return_alert"></span>
+
+                                <!--+-----------------+
+                        |       ADD       |
+                        +-----------------+
+                        |      UPDATE     |
+                        +-----------------+-------->
+                                <script>
                             function cmd_add_value() {
                                 filds_validate = "";
                                 var _content = $(".fr-element.fr-view").html();
@@ -386,175 +425,175 @@
                                     table_name.value,
                                     id.value);
                             }
-                        </script>
-                    </div>
+                                </script>
+                            </div>
 
-                </div>
-
-                <!--+-----------------+
-                    |     TAB[3]      |
-                    +-----------------+----->
-                <div id="tab1_3" class="tab-pane">
-
-                    <div class="section-divider mb40 mt20"><span> اطلاعات کاربر </span></div>
-
-                    <div class="section row">
-                        <!--نام-->
-                        <div class="col-md-6">
-                            <label for="filds__Fname" class="field prepend-icon">
-                                <input disabled class="gui-input cantact-group" placeholder="نام" value="@ViewBag.fname">
-                                <label class="field-icon"><i class="fa J-fa-fname"></i></label>
-                            </label>
                         </div>
 
-                        <!--نام خانوادگی-->
-                        <div class="col-md-6">
-                            <label class="field prepend-icon">
-                                <input disabled class="gui-input cantact-group" placeholder="نام خانوادگی" value="@ViewBag.lname">
-                                <label class="field-icon"><i class="fa J-fa-lname"></i></label>
-                            </label>
+                        <!--+-----------------+
+                |     TAB[3]      |
+                +-----------------+----->
+                        <div id="tab1_3" class="tab-pane">
+
+                            <div class="section-divider mb40 mt20"><span> اطلاعات کاربر </span></div>
+
+                            <div class="section row">
+                                <!--نام-->
+                                <div class="col-md-6">
+                                    <label for="filds__Fname" class="field prepend-icon">
+                                        <input disabled class="gui-input cantact-group" placeholder="نام" value="@ViewBag.fname">
+                                        <label class="field-icon"><i class="fa J-fa-fname"></i></label>
+                                    </label>
+                                </div>
+
+                                <!--نام خانوادگی-->
+                                <div class="col-md-6">
+                                    <label class="field prepend-icon">
+                                        <input disabled class="gui-input cantact-group" placeholder="نام خانوادگی" value="@ViewBag.lname">
+                                        <label class="field-icon"><i class="fa J-fa-lname"></i></label>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="section row">
+                                <!--نام شرکت-->
+                                <div class="col-md-6">
+                                    <label class="field prepend-icon">
+                                        <input disabled class="gui-input cantact-group" placeholder="نام شرکت" value="@ViewBag.Cname">
+                                        <label class="field-icon"><i class="fa J-fa-co"></i></label>
+                                    </label>
+                                </div>
+
+                                <!--شماره کارت ملی-->
+                                <div class="col-md-6">
+                                    <label class="field prepend-icon">
+                                        <input disabled class="gui-input cantact-group" placeholder="شماره کارت ملی" value="@ViewBag.codemeli">
+                                        <label class="field-icon"><i class="fa J-fa-meli"></i></label>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="section row">
+
+
+                                <!--آدرس-->
+                                <div class="col-md-12">
+                                    <label class="field prepend-icon">
+                                        <input disabled class="gui-input cantact-group" placeholder="آدرس" value="@ViewBag.address">
+                                        <label class="field-icon"><i class="fa J-fa-address"></i></label>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="section row">
+                                <!--شماره تلفن-->
+                                <div class="col-md-6">
+                                    <label class="field prepend-icon">
+                                        <input disabled class="gui-input cantact-group" placeholder="شماره تلفن" value="@ViewBag.tel">
+                                        <label class="field-icon"><i class="fa J-fa-tel"></i></label>
+                                    </label>
+                                </div>
+
+                                <!--موبایل-->
+                                <div class="col-md-6">
+                                    <label class="field prepend-icon">
+                                        <input disabled class="gui-input cantact-group" placeholder="موبایل" value="@ViewBag.mobile">
+                                        <label class="field-icon"><i class="fa J-fa-mob"></i></label>
+                                    </label>
+                                </div>
+                            </div>
+
+
+
+
+                            <div class="section row">
+                                <!--نام پدی-->
+                                <div class="col-md-6">
+                                    <label class="field prepend-icon">
+                                        <input disabled class="gui-input cantact-group" placeholder="نام پدی" value="@ViewBag.father_name">
+                                        <label class="field-icon"><i class="fa J-fa-myfathername"></i></label>
+                                    </label>
+                                </div>
+
+                                <!--تاریخ تولد-->
+                                <div class="col-md-6">
+                                    <label class="field prepend-icon">
+                                        <input disabled class="gui-input cantact-group" placeholder="تاریخ تولد" value="@ViewBag.birtday">
+                                        <label class="field-icon"><i class="fa J-fa-birt"></i></label>
+                                    </label>
+                                </div>
+                            </div>
+
+
+
+                            <div class="section row">
+                                <!--شماره شناسنامه-->
+                                <div class="col-md-6">
+                                    <label class="field prepend-icon">
+                                        <input disabled class="gui-input cantact-group" placeholder="شماره شناسنامه" value="@ViewBag.no_identity">
+                                        <label class="field-icon"><i class="fa J-fa-identity"></i></label>
+                                    </label>
+                                </div>
+
+                                <!--ایمیل-->
+                                <div class="col-md-6">
+                                    <label class="field prepend-icon">
+                                        <input disabled class="gui-input cantact-group" placeholder="ایمیل" value="@ViewBag.email">
+                                        <label class="field-icon"><i class="fa J-fa-email"></i></label>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="section row">
+                                <!--کد پستی-->
+                                <div class="col-md-6">
+                                    <label class="field prepend-icon">
+                                        <input disabled class="gui-input cantact-group" placeholder="کد پستی" value="@ViewBag.post_code">
+                                        <label class="field-icon"><i class="fa J-fa-post"></i></label>
+                                    </label>
+                                </div>
+
+                                <!--جنسیت-->
+                                <div class="col-md-6">
+                                    <label class="field prepend-icon">
+                                        <input disabled class="gui-input cantact-group" placeholder="جنسیت" value="@ViewBag.se">
+                                        <label class="field-icon"><i class="fa J-fa-se"></i></label>
+                                    </label>
+                                </div>
+                            </div>
+
                         </div>
-                    </div>
 
-                    <div class="section row">
-                        <!--نام شرکت-->
-                        <div class="col-md-6">
-                            <label class="field prepend-icon">
-                                <input disabled class="gui-input cantact-group" placeholder="نام شرکت" value="@ViewBag.Cname">
-                                <label class="field-icon"><i class="fa J-fa-co"></i></label>
-                            </label>
+                        <!--+-----------------+
+                |     TAB[4]      |
+                +-----------------+----->
+                        <div id="tab1_4" class="tab-pane">
+
+                            <div class="section-divider mb40 mt20"><span> لیست تراکنش ها </span></div>
+
+                            <table class="table admin-form theme-warning tc-checkbox-1 fs13">
+                                <!-- <!-- عناوین جدول -->
+                                <thead>
+                                    <tr class="bg-light">
+                                        <th class="">شماره درخواست</th>
+                                        <th class="">کد سفارش</th>
+                                        <th class="">عنوان</th>
+                                        <th class="">نام بانک</th>
+                                        <th class="">وضعیت</th>
+                                        <th class="">شماره پیگیری</th>
+                                        <th class="">مبلغ تراکنش</th>
+                                        <th class="">تاریخ ثبت</th>
+                                        <th class="">تاریخ و ساعت میلادی</th>
+                                    </tr>
+                                </thead>
+
+                                <!-- <!-- محتوای جدول -->
+                                <tbody>@MvcHtmlString.Create(ViewBag.transaction_li)</tbody>
+                            </table>
+                            <br />
                         </div>
 
-                        <!--شماره کارت ملی-->
-                        <div class="col-md-6">
-                            <label class="field prepend-icon">
-                                <input disabled class="gui-input cantact-group" placeholder="شماره کارت ملی" value="@ViewBag.codemeli">
-                                <label class="field-icon"><i class="fa J-fa-meli"></i></label>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="section row">
-
-
-                        <!--آدرس-->
-                        <div class="col-md-12">
-                            <label class="field prepend-icon">
-                                <input disabled class="gui-input cantact-group" placeholder="آدرس" value="@ViewBag.address">
-                                <label class="field-icon"><i class="fa J-fa-address"></i></label>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="section row">
-                        <!--شماره تلفن-->
-                        <div class="col-md-6">
-                            <label class="field prepend-icon">
-                                <input disabled class="gui-input cantact-group" placeholder="شماره تلفن" value="@ViewBag.tel">
-                                <label class="field-icon"><i class="fa J-fa-tel"></i></label>
-                            </label>
-                        </div>
-
-                        <!--موبایل-->
-                        <div class="col-md-6">
-                            <label class="field prepend-icon">
-                                <input disabled class="gui-input cantact-group" placeholder="موبایل" value="@ViewBag.mobile">
-                                <label class="field-icon"><i class="fa J-fa-mob"></i></label>
-                            </label>
-                        </div>
-                    </div>
-
-
-
-
-                    <div class="section row">
-                        <!--نام پدی-->
-                        <div class="col-md-6">
-                            <label class="field prepend-icon">
-                                <input disabled class="gui-input cantact-group" placeholder="نام پدی" value="@ViewBag.father_name">
-                                <label class="field-icon"><i class="fa J-fa-myfathername"></i></label>
-                            </label>
-                        </div>
-
-                        <!--تاریخ تولد-->
-                        <div class="col-md-6">
-                            <label class="field prepend-icon">
-                                <input disabled class="gui-input cantact-group" placeholder="تاریخ تولد" value="@ViewBag.birtday">
-                                <label class="field-icon"><i class="fa J-fa-birt"></i></label>
-                            </label>
-                        </div>
-                    </div>
-
-
-
-                    <div class="section row">
-                        <!--شماره شناسنامه-->
-                        <div class="col-md-6">
-                            <label class="field prepend-icon">
-                                <input disabled class="gui-input cantact-group" placeholder="شماره شناسنامه" value="@ViewBag.no_identity">
-                                <label class="field-icon"><i class="fa J-fa-identity"></i></label>
-                            </label>
-                        </div>
-
-                        <!--ایمیل-->
-                        <div class="col-md-6">
-                            <label class="field prepend-icon">
-                                <input disabled class="gui-input cantact-group" placeholder="ایمیل" value="@ViewBag.email">
-                                <label class="field-icon"><i class="fa J-fa-email"></i></label>
-                            </label>
-                        </div>
-                    </div>
-
-                    <div class="section row">
-                        <!--کد پستی-->
-                        <div class="col-md-6">
-                            <label class="field prepend-icon">
-                                <input disabled class="gui-input cantact-group" placeholder="کد پستی" value="@ViewBag.post_code">
-                                <label class="field-icon"><i class="fa J-fa-post"></i></label>
-                            </label>
-                        </div>
-
-                        <!--جنسیت-->
-                        <div class="col-md-6">
-                            <label class="field prepend-icon">
-                                <input disabled class="gui-input cantact-group" placeholder="جنسیت" value="@ViewBag.se">
-                                <label class="field-icon"><i class="fa J-fa-se"></i></label>
-                            </label>
-                        </div>
-                    </div>
-
-                </div>
-
-                <!--+-----------------+
-                    |     TAB[4]      |
-                    +-----------------+----->
-                <div id="tab1_4" class="tab-pane">
-
-                    <div class="section-divider mb40 mt20"><span> لیست تراکنش ها </span></div>
-
-                    <table class="table admin-form theme-warning tc-checkbox-1 fs13">
-                        <!-- <!-- عناوین جدول -->
-                        <thead>
-                            <tr class="bg-light">
-                                <th class="">شماره درخواست</th>
-                                <th class="">کد سفارش</th>
-                                <th class="">عنوان</th>
-                                <th class="">نام بانک</th>
-                                <th class="">وضعیت</th>
-                                <th class="">شماره پیگیری</th>
-                                <th class="">مبلغ تراکنش</th>
-                                <th class="">تاریخ ثبت</th>
-                                <th class="">تاریخ و ساعت میلادی</th>
-                            </tr>
-                        </thead>
-
-                        <!-- <!-- محتوای جدول -->
-                        <tbody>@MvcHtmlString.Create(ViewBag.transaction_li)</tbody>
-                    </table>
-                    <br />
-                </div>
-
-            </form>
+</form>
         </div>
 
         <!--+-----------------+
