@@ -283,6 +283,28 @@
                                     </div>
                                 </div>
 
+
+                                <div class="section">
+                                    <label for="select_Nationality" class="field-label text-muted fs18 mb10 lang_Password lang_Language">Language</label>
+                                    <label for="select_Nationality" class="field prepend-icon">
+                                        <select name="select_Nationality" id="select_Nationality" class="select2-primary form-control">
+                                            @{    Insursys.Models.Repository.rpt_Language Rlang = new Insursys.Models.Repository.rpt_Language();
+                                                foreach (var item in Rlang.GetLangList())
+
+                                                {
+                                                    <option value="@item.Language_Iso">@item.Language_DisplayName</option>
+
+                                                }
+                                            }
+                                        </select>
+                                    </label>
+                                </div>
+
+
+
+                                <script>$(".select2-primary").select2();</script>
+
+
                             </div>
 
                         </div>
